@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080e17">
+<title>星火长征 · 重走长征路</title>
+<meta name="description" content="纪念中国工农红军长征胜利九十周年：十二站星火问答，三种题型、五格星火、燎原时刻，支持手机与电脑。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23070a10'/%3E%3Cpath d='M32 12l5.7 12 13.2 1.8-9.6 9.3 2.4 13.1L32 42l-11.7 6.2 2.4-13.1-9.6-9.3 13.2-1.8z' fill='%23e8c485'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23c94832'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="prologue-open">
+
+<div class="bg" aria-hidden="true">
+  <canvas id="bgStars"></canvas>
+  <div class="bg-nebula"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-grain"></div>
+  <div class="bg-vignette"></div>
+</div>
+
+<!-- ============ 序章 ============ -->
+<section class="prologue" id="prologue" role="dialog" aria-modal="true" aria-label="长征序章：一九三四年，中央红军踏上征途" tabindex="-1">
+  <div class="pro-inner" id="proInner">
+    <div class="pro-scene" id="proScene" aria-hidden="true">
+      <svg class="pro-landscape" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="proSkyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#04060d"/>
+            <stop offset=".42" stop-color="#080b12"/>
+            <stop offset=".7" stop-color="#140c0c"/>
+            <stop offset=".88" stop-color="#2b150d"/>
+            <stop offset="1" stop-color="#3c1c0e"/>
+          </linearGradient>
+          <linearGradient id="proFarGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#241613"/>
+            <stop offset="1" stop-color="#0e0908"/>
+          </linearGradient>
+          <linearGradient id="proMidGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#17100d"/>
+            <stop offset="1" stop-color="#090605"/>
+          </linearGradient>
+          <linearGradient id="proNearGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#070504"/>
+            <stop offset="1" stop-color="#020202"/>
+          </linearGradient>
+          <radialGradient id="proRidgeGlow" cx="50%" cy="70%" r="56%">
+            <stop offset="0" stop-color="#e98b4e" stop-opacity=".34"/>
+            <stop offset=".5" stop-color="#b04d26" stop-opacity=".14"/>
+            <stop offset="1" stop-color="#8f3518" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="proVillageGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#f0a260" stop-opacity=".3"/>
+            <stop offset="1" stop-color="#e39b5c" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="proRiverGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#d88a54" stop-opacity="0"/>
+            <stop offset=".5" stop-color="#e9ab74" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#d88a54" stop-opacity="0"/>
+          </linearGradient>
+          <symbol id="proSoldier" viewBox="0 0 20 44">
+            <circle cx="8.2" cy="5.2" r="3.2"/>
+            <path d="M5.4 9h5.6l1.2 8.2-1.6 1.2-.3 4.8 3.2 9.4h-2.7l-3.1-8-2.9 8H2.3l3.1-9.6-.7-4.5-1.9-.8z"/>
+            <path d="M11.2 16.8 17 5.4" fill="none" stroke="#040201" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M16.7 6.3 18.8 2.5" fill="none" stroke="#040201" stroke-width="1.1" stroke-linecap="round"/>
+            <path d="M4.6 10.4l6.4-.4" fill="none" stroke="#040201" stroke-width="1.3" opacity=".65"/>
+          </symbol>
+        </defs>
+        <rect width="1600" height="900" fill="url(#proSkyGrad)"/>
+        <ellipse cx="860" cy="606" rx="640" ry="210" fill="url(#proRidgeGlow)"/>
+        <path d="M0 574l92-42 79 28 87-56 86 44 97-70 87 50 98-42 86 54 108-40 90 48 94-36 98 50 102-34 98 42 106-38 104 34 88-24v366H0Z" fill="url(#proFarGrad)" opacity=".86"/>
+        <path d="M0 648c140-36 240-8 356-28 106-18 190 26 310 8 124-18 212 24 338 8 124-16 214 24 336 4 112-18 188 8 260-10v274H0Z" fill="url(#proMidGrad)"/>
+        <ellipse cx="272" cy="666" rx="170" ry="64" fill="url(#proVillageGlow)"/>
+        <g fill="#070403">
+          <path d="M120 684v-34h44v34zM114 650l28-18 28 18z"/>
+          <path d="M178 684v-26h34v26zM172 658l23-15 23 15z"/>
+          <path d="M302 684v-40h30v40zM296 644l21-17 21 17z"/>
+          <path d="M254 684v-46h18v46z"/>
+          <path d="M246 638h34l-17-15z"/>
+          <path d="M249 623h28l-14-13z"/>
+          <path d="M253 610h20l-10-11z"/>
+          <path d="M261 598v-12h3v12z"/>
+        </g>
+        <circle class="pro-lantern" cx="263" cy="666" r="1.7" fill="#e69055" opacity=".7"/>
+        <g fill="none" stroke="#070403" stroke-width="2.4" stroke-linecap="round">
+          <path d="M76 686v-48M76 654l-12-14M76 664l13-17M68 644l-7-8M84 641l9-8"/>
+          <path d="M458 690v-40M458 664l-10-14M458 672l11-15"/>
+          <path d="M104 692v-26M104 682l-9-10M104 686l8-11"/>
+        </g>
+        <path d="M0 764c168-36 296-8 452-26 166-20 296 14 452-8 160-22 310 14 466-10 110-18 180 0 230-12v192H0Z" fill="url(#proNearGrad)"/>
+        <path d="M0 764c168-36 296-8 452-26 166-20 296 14 452-8 160-22 310 14 466-10 110-18 180 0 230-12" fill="none" stroke="rgba(214,138,86,.18)" stroke-width="1.6"/>
+        <path d="M0 824c220-12 420 10 640-2s450 8 660-4 240-4 300-10v92H0Z" fill="url(#proRiverGrad)"/>
+        <g class="pro-marchers" fill="#040201">
+          <use href="#proSoldier" x="576" y="694" width="20" height="44"/>
+          <use href="#proSoldier" x="600" y="695" width="20" height="44"/>
+          <use href="#proSoldier" x="624" y="694" width="20" height="44"/>
+          <use href="#proSoldier" x="648" y="696" width="20" height="44"/>
+          <use href="#proSoldier" x="672" y="695" width="20" height="44"/>
+          <use href="#proSoldier" x="696" y="698" width="20" height="44"/>
+          <use href="#proSoldier" x="720" y="696" width="20" height="44"/>
+          <use href="#proSoldier" x="744" y="699" width="20" height="44"/>
+          <use href="#proSoldier" x="768" y="697" width="20" height="44"/>
+        </g>
+      </svg>
+      <div class="pro-moon"></div>
+      <div class="pro-milkyway"></div>
+      <div class="pro-haze"></div>
+      <svg class="extra-ridge" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:35% 0 0;width:100%;height:65%;pointer-events:none"><path d="M0 210L120 128 200 172 340 72 470 158 600 98 730 176 880 80 1020 164 1120 116 1200 190V400H0Z" fill="#18202a" opacity=".4"/><path d="M0 278L170 206 280 258 420 166 560 250 740 190 860 266 1050 198 1200 270V400H0Z" fill="#10151e" opacity=".55"/></svg><div class="pro-mist m1"></div>
+      <div class="pro-mist m2"></div>
+      <div class="pro-smoke s1"></div>
+      <div class="pro-smoke s2"></div>
+      <div class="pro-vignette"></div>
+      <div class="pro-grain"></div>
+    </div>
+
+    <div class="pro-fires" aria-hidden="true">
+      <div class="pro-blaze z1"></div>
+      <div class="pro-blaze z2"></div>
+      <div class="pro-blaze z3"></div>
+    </div>
+
+    <div class="pro-photo" aria-hidden="true">
+      <div class="wind-motes">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+    </div>
+
+<div class="pro-hero cinema-hero" aria-hidden="true">
+<svg id="cinemaHero" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet" focusable="false" aria-hidden="true">
+<defs>
+ <linearGradient id="cinemaUniform" x1="0" x2="1"><stop stop-color="#080e16"/><stop offset=".7" stop-color="#131d26"/><stop offset="1" stop-color="#384039"/></linearGradient>
+ <linearGradient id="cinemaRim" x1="0" x2="1"><stop stop-color="#685339" stop-opacity=".12"/><stop offset=".85" stop-color="#c59a60" stop-opacity=".65"/><stop offset="1" stop-color="#edd19a" stop-opacity=".85"/></linearGradient>
+ <radialGradient id="cinemaBacklight"><stop stop-color="#c88e49" stop-opacity=".23"/><stop offset=".4" stop-color="#ad763f" stop-opacity=".09"/><stop offset="1" stop-color="#bc864d" stop-opacity="0"/></radialGradient>
+ <linearGradient id="cinemaRock" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#202327"/><stop offset="1" stop-color="#060b12"/></linearGradient>
+</defs>
+<ellipse class="cinema-light" cx="255" cy="273" rx="300" ry="270" fill="url(#cinemaBacklight)"/>
+<!-- The rocky ledge and upward-facing profile establish a low camera angle. -->
+<path d="M0 578 52 553 95 550 128 532 178 536 224 547 274 542 343 565 480 600H0Z" fill="url(#cinemaRock)"/>
+<path d="M52 553 95 550 128 532 178 536 224 547 274 542" stroke="#b38b56" stroke-opacity=".25" fill="none"/>
+<g class="hero-figure" fill="url(#cinemaUniform)" stroke="url(#cinemaRim)" stroke-width="1.25" stroke-linejoin="round">
+ <!-- Bent, separate legs with gaiters and grounded boots. -->
+ <path d="M133 370 170 372 162 422 145 479 143 527 115 535 111 526 119 477 128 420Z"/>
+ <path d="M162 372 188 369 197 426 220 483 231 528 207 538 196 531 190 487 165 437 151 416Z"/>
+ <path d="M115 523 143 520 146 535 132 541 104 540 101 534Z" fill="#080e14"/>
+ <path d="M206 525 231 522 235 531 254 536 255 544 216 545 200 536Z" fill="#080e14"/>
+ <!-- Tunic, belt, shoulder and a compact marching pack. -->
+ <path d="M113 281 100 293 101 352 119 365 128 316Z" fill="#101923"/>
+ <path d="M143 265 162 266 180 278 185 322 192 377 169 387 126 380 123 333 121 292Z"/>
+ <path d="M127 353 184 352 187 363 128 366Z" fill="#372e25"/>
+ <path d="M153 352h10v12h-10z" fill="#7d6848" stroke="none"/>
+ <path d="M133 288 169 348M137 286 173 346" stroke="#716348" stroke-opacity=".5" stroke-width="2"/>
+ <path d="M133 311h14v17h-14M167 307h12v17h-12" fill="none" stroke="#697064" stroke-opacity=".25"/>
+ <!-- Neck and angular side-profile, not a circular head. -->
+ <path d="M144 249 144 269 157 278 169 265 165 248Z"/>
+ <path d="M139 226 146 214 163 214 175 225 174 235 180 241 173 245 172 254 161 260 148 252 140 240Z"/>
+ <path d="M150 234 154 230 155 238M168 230h4" fill="none" stroke="#b1966b" stroke-opacity=".45"/>
+ <!-- Recognisable military cap, broad brim and fabric crown. -->
+ <path d="M136 224 138 212 146 204 166 207 175 217 174 224Z"/>
+ <path d="M137 222 172 220 184 224 180 229 151 228 137 230Z" fill="#1c252b"/>
+ <path d="m153 211 1.2 2.3 2.6.4-1.9 1.8.5 2.6-2.4-1.2-2.3 1.2.4-2.6-1.8-1.8 2.5-.4z" fill="#85372a" stroke="none"/>
+ <!-- Raised upper arm and forearm end exactly at the pole x=207. -->
+ <path d="M165 278 178 270 187 249 197 222 210 226 204 258 187 296 176 302Z"/>
+ <path d="M194 224 196 214 202 210 211 211 215 216 213 227 205 231Z" fill="#32392f"/>
+ <!-- Lower supporting hand also encloses the same solid pole. -->
+ <path d="M129 285 117 298 130 329 165 339 204 318 200 306 164 319 144 307 139 291Z"/>
+ <path d="M198 307 202 300 210 299 216 304 214 314 206 321 200 319Z" fill="#32392f"/>
+ <path d="M139 384 155 384M172 386 182 381M120 482 143 487M193 486 219 479" fill="none" stroke="#9c926e" stroke-opacity=".3"/>
+</g>
+<g class="hero-pole"><path d="M207 43V546" stroke="#171e21" stroke-width="7" stroke-linecap="round"/><path d="M209 44V546" stroke="#c5a06a" stroke-opacity=".65" stroke-width="1.7"/><path d="m207 28-4 15h8Z" fill="#ad9062"/></g>
+<!-- Fingers in front of pole guarantee the grip remains connected throughout. -->
+<path d="M203 216h9m-9 5h9m-8 84h9m-10 5h9" stroke="#a5926d" stroke-opacity=".65" stroke-width="2.5" stroke-linecap="round"/>
+<g class="hero-flag" id="cinemaCloth"></g>
+<path id="cinemaFlagEdge" fill="none" stroke="#eac08b" stroke-opacity=".5" stroke-width="1"/>
+</svg>
+<div class="hero-embers"><i></i><i></i><i></i><i></i></div>
+</div>
+
+    <canvas class="pro-stars-canvas" id="proStars" aria-hidden="true"></canvas>
+
+    <svg class="pro-constellation" id="proConstellation" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="pcNodeGlow">
+          <stop offset="0" stop-color="#fff4d6" stop-opacity=".95"/>
+          <stop offset=".35" stop-color="#f1cd8d" stop-opacity=".45"/>
+          <stop offset="1" stop-color="#e8c485" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="pcSoft" x="-120%" y="-120%" width="340%" height="340%">
+          <feGaussianBlur stdDeviation="2.2"/>
+        </filter>
+      </defs>
+      <path class="pc-route" id="pcRoute" d="M92 548C188 512 236 456 318 424S466 372 534 318 668 258 742 208 870 138 934 84"/>
+      <g class="pc-nodes" id="pcNodes"></g>
+      <g class="pc-big" id="pcBig">
+        <circle cx="934" cy="84" r="17" fill="url(#pcNodeGlow)" filter="url(#pcSoft)"/>
+        <circle cx="934" cy="84" r="3.4" fill="#fff4d6"/>
+        <path d="M934 65v8M934 95v8M915 84h8M945 84h8" stroke="#f6dfa9" stroke-width="1" opacity=".8"/>
+      </g>
+    </svg>
+
+    <div class="pro-ui">
+      <header class="pro-top">
+        <p class="pro-label"><i></i>序章 · 一九三四</p>
+        <button class="pro-skip" id="introSkip" type="button">跳过序章 <kbd>Esc</kbd></button>
+      </header>
+
+      <div class="pro-captions" aria-live="polite">
+        <article class="pro-card" data-pro-card="0" aria-hidden="true">
+          <p class="pro-kicker">1934.10 · 江西于都</p>
+          <h2 class="pro-title">八万六千人，<br><em>星夜渡河</em></h2>
+          <p class="pro-sub">中央红军告别中央苏区，踏上战略转移之路。</p>
+          <p class="pro-fact"><b>史实</b>8.6万余人 · 于都河被称为“长征第一渡”</p>
+        </article>
+        <article class="pro-card" data-pro-card="1" aria-hidden="true">
+          <p class="pro-kicker">1934.11—12 · 广西湘江</p>
+          <h2 class="pro-title">血战湘江，<br><em>最沉重的一页</em></h2>
+          <p class="pro-sub">红军以巨大牺牲掩护中央纵队渡江，人数锐减。</p>
+          <p class="pro-fact"><b>史实</b>中央红军由8.6万余人减至3万余人 · 长征中最惨烈一战</p>
+        </article>
+        <article class="pro-card" data-pro-card="2" aria-hidden="true">
+          <p class="pro-kicker">1935.01 · 贵州遵义</p>
+          <h2 class="pro-title">一场会议，<br><em>扭转航向</em></h2>
+          <p class="pro-sub">遵义会议在危急关头挽救了党、挽救了红军、挽救了中国革命。</p>
+          <p class="pro-fact"><b>史实</b>1935.1.15—17 · 生死攸关的转折点 · 独立自主解决路线问题</p>
+        </article>
+        <article class="pro-card" data-pro-card="3" aria-hidden="true">
+          <p class="pro-kicker">1935.05 · 金沙江—大渡河</p>
+          <h2 class="pro-title">七条小船，<br><em>十三根铁索</em></h2>
+          <p class="pro-sub">巧渡金沙江、飞夺泸定桥，红军在绝境中打开北上通道。</p>
+          <p class="pro-fact"><b>史实</b>7条小船9天9夜 · 22名勇士攀13根铁索夺桥</p>
+        </article>
+        <article class="pro-card" data-pro-card="4" aria-hidden="true">
+          <p class="pro-kicker">1935.06—1936.10 · 雪山草地—会宁</p>
+          <h2 class="pro-title">以双脚，<br><em>丈量信仰</em></h2>
+          <p class="pro-sub">翻雪山、过草地、突破腊子口，三大主力最终会师。</p>
+          <p class="pro-fact"><b>史实</b>夹金山 · 松潘草地 · 1936.10 会宁会师 · 二万五千里</p>
+        </article>
+      </div>
+
+      <div class="pro-final" data-pro-final aria-hidden="true">
+        <div class="pro-final-inner">
+          <span class="pro-epic-star" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2.6l2.8 6 6.5.9-4.7 4.6 1.1 6.5-5.7-3-5.7 3 1.1-6.5L2.7 9.5l6.5-.9z"/></svg>
+          </span>
+          <p class="pro-kicker">THE LONG MARCH · 1934—1936</p>
+          <h2 class="pro-epic">长征</h2>
+          <p class="pro-epic-sub">二万五千里 · 星火不灭</p>
+          <div class="pro-epic-facts" aria-label="长征关键史实">
+            <span><b>1934.10</b>于都出发 · 长征第一渡</span>
+            <span><b>1935.01</b>遵义会议 · 生死攸关的转折点</span>
+            <span><b>1936.10</b>会宁会师 · 三大主力胜利会师</span>
+          </div>
+          <p class="pro-epic-note">纵横十余省 · 翻越雪山草地 · 行程约二万五千里</p>
+          <button class="pro-enter" id="proEnter" type="button">
+            由此启程
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 6l6 6-6 6"/></svg>
+          </button>
+          <p class="pro-auto" id="proAuto">稍候，自动启程</p>
+        </div>
+      </div>
+
+      <div class="pro-bottom">
+        <div class="pro-acts" aria-hidden="true">
+          <i data-act-dot="0"></i><i data-act-dot="1"></i><i data-act-dot="2"></i><i data-act-dot="3"></i><i data-act-dot="4"></i>
+          <span>一九三四 · 一九三六</span>
+        </div>
+        <p class="pro-hint" id="proHint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7"/></svg>
+          <span>轻触画面 · 开启声效</span>
+        </p>
+      </div>
+    </div>
+    <div class="pro-progress" aria-hidden="true"><i id="proProgressBar"></i></div>
+  </div>
+  <div class="pro-edge" aria-hidden="true"></div>
+  <canvas class="pro-reveal-canvas" id="proReveal" aria-hidden="true"></canvas>
+</section>
+
+<!-- ============ 顶栏 ============ -->
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand" aria-label="星火长征">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6-5.9-3.1-5.9 3.1 1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"/></svg>
+      </span>
+      <span class="brand-text"><b>星火长征</b><i>THE LONG MARCH</i></span>
+    </div>
+    <div class="top-actions">
+      <span class="anniversary">1936 — 2026 · 长征胜利 90 周年</span>
+      <span class="mode-chip" id="modeChip" hidden>标准</span>
+      <button class="icon-btn" id="helpBtn" type="button" aria-label="玩法说明" title="玩法说明">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.4 9.2a2.7 2.7 0 015.2.8c0 1.8-2.6 2.1-2.6 3.7"/><path d="M12 17.2v.1"/></svg>
+        <span class="btn-label">玩法</span>
+      </button>
+      <button class="icon-btn" id="soundToggle" type="button" aria-pressed="true" aria-label="关闭音效" title="关闭音效">
+        <svg class="icon-sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 010 7"/><path d="M18.8 6.2a8.5 8.5 0 010 11.6"/></svg>
+        <svg class="icon-sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9l5 6M21.5 9l-5 6"/></svg>
+        <span class="btn-label">音效</span>
+      </button>
+      <button class="icon-btn" id="routeToggle" type="button" aria-controls="journeyPanel" aria-expanded="false" aria-label="查看长征路线" title="查看长征路线">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6z"/><path d="M9 4v14M15 6v14"/></svg>
+        <span class="btn-label">路线</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 主体 ============ -->
+<main class="app">
+  <aside class="journey" id="journeyPanel" aria-label="长征路线图">
+    <button class="journey-close" id="routeClose" type="button" aria-label="关闭路线图">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="journey-head">
+      <p class="kicker">THE LONG MARCH · 1934—1936</p>
+      <h2>征途十二站</h2>
+      <p class="journey-desc">于都 → 会宁 · 二万五千里</p>
+    </div>
+    <div class="map-frame" id="mapFrame">
+      <div class="map-svg" id="routeMap" role="group" aria-label="长征路线示意图：从江西于都出发，经湘江、遵义、赤水、金沙江、泸定桥、夹金山、草地、腊子口、吴起镇，到会宁会师，最终星火相传。"></div>
+      <div class="map-stamp" aria-hidden="true"><b>长征</b><small>1934—1936</small></div>
+      <button class="map-tip" id="mapTip" type="button">点击地图 · 查看路线全图</button>
+    </div>
+    <div class="journey-status">
+      <div class="status-row">
+        <span class="status-beacon" aria-hidden="true"></span>
+        <p id="journeyStatusText" aria-live="polite">等待出发 · 十二站征途</p>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><i class="lg-done"></i>已抵达</span>
+        <span><i class="lg-current"></i>正在此地</span>
+        <span><i class="lg-wait"></i>待出发</span>
+      </div>
+      <blockquote class="journey-quote">红军不怕远征难，<br>万水千山只等闲。</blockquote>
+    </div>
+  </aside>
+  <button class="backdrop" id="backdrop" type="button" aria-label="关闭路线图" tabindex="-1"></button>
+
+  <section class="stage-area" id="stageArea">
+    <!-- 开始页 -->
+    <section class="screen start-screen" id="startScreen" aria-labelledby="gameTitle">
+      <svg class="hero-chart" viewBox="0 0 900 460" aria-hidden="true" focusable="false">
+        <g class="hc-dots">
+          <circle cx="80" cy="92" r="1.4"/><circle cx="164" cy="48" r="1"/><circle cx="238" cy="138" r="1.2"/>
+          <circle cx="328" cy="60" r="1.5"/><circle cx="408" cy="122" r="1"/><circle cx="492" cy="38" r="1.2"/>
+          <circle cx="586" cy="108" r="1.5"/><circle cx="676" cy="56" r="1"/><circle cx="760" cy="132" r="1.2"/>
+          <circle cx="840" cy="72" r="1.4"/><circle cx="118" cy="212" r="1"/><circle cx="286" cy="252" r="1.2"/>
+          <circle cx="468" cy="216" r="1"/><circle cx="648" cy="262" r="1.2"/><circle cx="812" cy="218" r="1"/>
+        </g>
+        <g class="hc-lines">
+          <path d="M80 92 164 48 238 138 328 60 408 122 492 38"/>
+          <path d="M586 108 676 56 760 132 840 72"/>
+          <circle cx="492" cy="38" r="3"/>
+        </g>
+      </svg>
+      <div class="hero-mark" aria-hidden="true">90</div>
+      <p class="eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6-5.9-3.1-5.9 3.1 1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"/></svg>
+        纪念中国工农红军长征胜利九十周年
+        <span class="eyebrow-line" aria-hidden="true"></span>
+      </p>
+      <h1 class="hero-title" id="gameTitle"><span>重走</span><em>长征</em><span>路</span></h1>
+      <p class="hero-sub">十二站星火问答，重走二万五千里</p>
+      <p class="hero-copy">从于都河畔的星夜，到会宁城下的会师。三种题型、五格星火、<span class="nowrap">四道险关</span>——这一次，不只是答题，而是沿着长征的路，点亮一张星图。</p>
+
+      <div class="start-stats" aria-label="游戏信息">
+        <div><strong>12</strong><span>星站</span></div>
+        <div><strong>4</strong><span>险关</span></div>
+        <div><strong>3</strong><span>题型</span></div>
+        <div><strong>8</strong><span>印记</span></div>
+      </div>
+
+      <div class="start-grid">
+        <div class="launch-panel">
+          <div class="panel-head">
+            <span>选择行军难度</span>
+            <small>DIFFICULTY</small>
+          </div>
+          <div class="modes" id="modeSelect" role="radiogroup" aria-label="行军难度">
+            <button class="mode-card" type="button" data-mode="easy" role="radio" aria-checked="false">
+              <span class="mode-dot" aria-hidden="true"></span>
+              <b>轻装</b>
+              <small>30″ / 从容识途</small>
+            </button>
+            <button class="mode-card" type="button" data-mode="normal" role="radio" aria-checked="false">
+              <span class="mode-dot" aria-hidden="true"></span>
+              <b>标准</b>
+              <small>25″ / 风雨兼程</small>
+            </button>
+            <button class="mode-card" type="button" data-mode="hard" role="radio" aria-checked="false">
+              <span class="mode-dot" aria-hidden="true"></span>
+              <b>铁血</b>
+              <small>19″ / 向死而生</small>
+            </button>
+          </div>
+          <p class="mode-note" id="modeNote">标准 · 25 秒作答 · 积分 ×1.0</p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-start" id="startBtn" type="button">
+              <span>踏上征途</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <button class="btn btn-ghost" id="previewBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6z"/><path d="M9 4v14M15 6v14"/></svg>
+              先看路线
+            </button>
+          </div>
+          <p class="start-note"><kbd>1</kbd>—<kbd>4</kbd> 作答 · <kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd> 锦囊 · <kbd>R</kbd> 燎原 · 险关军功 ×1.5</p>
+        </div>
+
+        <div class="start-side">
+          <div class="best-card">
+            <span class="best-kicker">BEST RECORD · <b id="bestModeLabel">标准</b></span>
+            <strong id="bestScoreText">—</strong>
+            <small id="bestNote">尚未启程</small>
+            <span class="best-star" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6-5.9-3.1-5.9 3.1 1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"/></svg>
+            </span>
+          </div>
+          <div class="marks-card">
+            <div class="marks-head"><span>行军印记</span><b id="marksCount">0 / 8</b></div>
+            <div class="marks-row" id="startMarks" aria-label="行军印记收藏"></div>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="hero-quote">
+        “红军不怕远征难，万水千山只等闲。”
+        <cite>毛泽东 ·《七律·长征》</cite>
+      </blockquote>
+    </section>
+
+    <!-- 答题页 -->
+    <section class="screen game-screen" id="gameScreen" aria-labelledby="questionText" hidden>
+      <div class="game-top">
+        <div class="station-head">
+          <p class="hud-kicker">第 <b id="hudStationNo">01</b> 站 <span>/ 共 12 站</span></p>
+          <h2 id="hudStationName">于都出发</h2>
+          <p class="hud-meta" id="hudStationMeta">1934.10 · 江西·于都</p>
+        </div>
+        <div class="game-meters">
+          <div class="score-meter">
+            <span>行军积分</span>
+            <strong id="scoreValue">0</strong>
+            <em class="score-float" id="scoreFloat" aria-hidden="true"></em>
+          </div>
+        </div>
+      </div>
+
+      <div class="timer-dock" id="timerDock">
+        <div class="countdown" id="timeRing" role="timer" aria-label="本题剩余时间">
+          <div class="countdown-clock">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <circle class="ring-bg" cx="24" cy="24" r="20.5"/>
+              <circle class="ring-fill" id="ringFill" cx="24" cy="24" r="20.5"/>
+            </svg>
+            <b><span id="timeLabel">25</span><small>秒</small></b>
+          </div>
+          <div class="countdown-main">
+            <div class="countdown-head">
+              <span class="countdown-state" id="timeState">从容作答</span>
+              <span class="countdown-label">本题倒计时</span>
+            </div>
+            <div class="countdown-track" aria-hidden="true"><i id="timeFill"></i></div>
+          </div>
+        </div>
+
+        <div class="journey-rail" id="journeyRail" aria-hidden="true"></div>
+      </div>
+
+      <div class="spark-bar">
+        <div class="spark-left">
+          <span class="spark-title">星火</span>
+          <div class="spark-pips" id="sparkPips" aria-hidden="true"></div>
+          <span class="combo-text" id="comboText">连捷 ×0</span>
+        </div>
+        <div class="spark-right">
+          <span class="blaze-active" id="blazeActive" hidden>燎原 · 本题积分 ×2</span>
+          <button class="blaze-btn" id="blazeBtn" type="button" disabled aria-label="燎原：本题积分翻倍，并延长 10 秒">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8c.4 4.2-3.7 5.7-3.7 9.4a3.7 3.7 0 007.4 0c0-1.7-.8-3.2-2-4.6-.2 1.5-1 2.4-2 2.8.6-2.7-.2-5.3.3-7.6z"/></svg>
+            燎原
+          </button>
+        </div>
+      </div>
+
+      <div class="question-card" id="questionCard">
+        <span class="key-watermark" aria-hidden="true">险</span>
+        <div class="card-top">
+          <div class="card-tags">
+            <span class="station-pill">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6-5.9-3.1-5.9 3.1 1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"/></svg>
+              <span id="cardStationName">于都出发</span>
+            </span>
+            <span class="type-tag" id="typeTag">单选</span>
+            <span class="key-tag" id="keyTag" hidden>险关 ×1.5</span>
+          </div>
+          <span class="card-index" id="cardIndex">01 / 12</span>
+        </div>
+        <p class="stage-intro" id="stageIntro"></p>
+        <h3 class="question-text" id="questionText" tabindex="-1"></h3>
+
+        <div class="tool-strip" id="toolStrip" role="group" aria-label="行军锦囊，每局各可使用一次">
+          <span class="tool-label" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 4h9a3 3 0 013 3v13H8a2 2 0 01-2-2V4z"/><path d="M9 8h6M9 12h5"/></svg>
+            锦囊
+          </span>
+          <button class="tool-btn" id="toolEye" type="button" data-tool="eye" aria-label="火眼，排除两个错误选项，剩余一次" title="火眼（Q）">
+            <span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.6"/></svg></span>
+            <span class="tool-copy"><b>火眼</b><small>排除两项</small></span>
+            <span class="tool-count" aria-hidden="true">1</span>
+          </button>
+          <button class="tool-btn" id="toolTime" type="button" data-tool="time" aria-label="疾行，延长十秒，剩余一次" title="疾行（W）">
+            <span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v5l3.2 1.8"/><path d="M19 3.5v4M17 5.5h4"/></svg></span>
+            <span class="tool-copy"><b>疾行</b><small>+10 秒</small></span>
+            <span class="tool-count" aria-hidden="true">1</span>
+          </button>
+          <button class="tool-btn" id="toolHint" type="button" data-tool="hint" aria-label="参谋，给出线索，剩余一次" title="参谋（E）">
+            <span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14v16l-7-4-7 4V4z"/><path d="M9 8h6M9 12h4"/></svg></span>
+            <span class="tool-copy"><b>参谋</b><small>一条线索</small></span>
+            <span class="tool-count" aria-hidden="true">1</span>
+          </button>
+        </div>
+
+        <div class="hint-box" id="hintBox" hidden>
+          <b>参谋提示</b>
+          <p id="hintText"></p>
+        </div>
+
+        <div class="challenge" id="challenge"></div>
+
+        <div class="feedback" id="feedback" aria-live="polite" hidden>
+          <div class="feedback-head">
+            <span class="feedback-badge" id="feedbackBadge">回答正确</span>
+            <span class="feedback-points" id="feedbackPoints"></span>
+          </div>
+          <p class="answer-line" id="answerLine"></p>
+          <div class="source-card" id="sourceCard" hidden>
+            <div class="source-card-art" id="sourceCardArt" aria-hidden="true"></div>
+            <div class="source-card-head">
+              <span class="source-card-kicker" id="sourceCardKicker">史料卡</span>
+              <span class="source-card-date" id="sourceCardDate"></span>
+            </div>
+            <h4 id="sourceCardTitle"></h4>
+            <ul id="sourceCardFacts"></ul>
+            <p class="source-card-source" id="sourceCardSource"></p>
+            <span class="source-card-seal" aria-hidden="true">史料</span>
+          </div>
+          <div class="feedback-body">
+            <span class="feedback-label">史实注脚</span>
+            <p id="explanation"></p>
+          </div>
+        </div>
+
+        <div class="card-foot">
+          <p class="keyboard-hint" id="keyboardHint">按 1—4 作答 · Q/W/E 锦囊 · R 燎原</p>
+          <button class="btn btn-primary btn-next" id="nextBtn" type="button" hidden>
+            <span id="nextLabel">前往下一站</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <p class="game-foot-note">历史不是标准答案，而是我们共同走过的路。</p>
+    </section>
+
+    <!-- 结算页 -->
+    <section class="screen result-screen" id="resultScreen" aria-labelledby="resultTitle" hidden>
+      <div class="result-head">
+        <p class="eyebrow">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.7 1.2 6.6-5.9-3.1-5.9 3.1 1.2-6.6L2.5 9.5l6.6-.9L12 2.5z"/></svg>
+          THE JOURNEY COMPLETE
+          <span class="eyebrow-line" aria-hidden="true"></span>
+        </p>
+        <h2 id="resultTitle" tabindex="-1">胜利会师</h2>
+        <p class="result-sub" id="resultSub">十二站，二万五千里，你已抵达。</p>
+      </div>
+
+      <div class="cert">
+        <span class="cert-corner tl" aria-hidden="true"></span>
+        <span class="cert-corner tr" aria-hidden="true"></span>
+        <span class="cert-corner bl" aria-hidden="true"></span>
+        <span class="cert-corner br" aria-hidden="true"></span>
+        <div class="cert-inner">
+          <div class="result-top">
+            <div class="seal" aria-hidden="true"><div class="seal-grid" id="rankSeal">长征先锋</div></div>
+            <div class="rank-info">
+              <span class="rank-kicker">本次军衔 · <b id="rankMode">标准</b></span>
+              <h3 id="rankTitle">长征先锋</h3>
+              <p id="rankLine"></p>
+            </div>
+            <div class="score-big">
+              <span>行军积分</span>
+              <strong id="finalScore">0</strong>
+              <small id="bestNoteResult"></small>
+            </div>
+          </div>
+
+          <div class="result-route" id="resultRoute" role="img" aria-label="十二站答题结果"></div>
+          <div class="result-route-ends" aria-hidden="true"><span>于都 · 1934</span><span>会宁 · 1936</span></div>
+
+          <div class="result-stats">
+            <div><strong id="statCorrect">0 / 12</strong><span>答对题数</span></div>
+            <div><strong id="statAccuracy">0%</strong><span>正确率</span></div>
+            <div><strong id="statStreak">×0</strong><span>最高连捷</span></div>
+            <div><strong id="statKey">0 / 4</strong><span>险关通过</span></div>
+          </div>
+
+          <div class="result-marks" id="resultMarks" hidden>
+            <p class="result-marks-title">新得行军印记</p>
+            <div class="result-marks-row" id="resultMarksRow"></div>
+          </div>
+
+          <div class="result-actions">
+            <button class="btn btn-primary" id="retryBtn" type="button">
+              再走一次
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <button class="btn btn-ghost" id="shareBtn" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M5 14v5h14v-5"/></svg>
+              分享战绩
+            </button>
+          </div>
+
+          <button class="review-toggle" id="reviewToggle" type="button" aria-expanded="false">
+            <span id="reviewToggleText">查看错题</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="review-list" id="reviewList" hidden></div>
+          <p class="perfect-note" id="perfectNote" hidden>十二站全部答对，星火长明。</p>
+
+          <p class="source-note">史实参考：中共中央党史和文献研究院等公开资料 · 本游戏为学习辅助</p>
+          <button class="home-link" id="homeBtn" type="button">返回起点</button>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<!-- ============ 站点转场 ============ -->
+<div class="station-transition" id="stationTransition" hidden aria-hidden="true">
+  <div class="st-media" id="stMedia">
+    <img class="st-bg" id="stImgBg" alt="" aria-hidden="true" decoding="async">
+    <img class="st-fg" id="stImg" alt="" decoding="async">
+  </div>
+  <div class="st-body">
+    <p class="st-kicker">MARCHING TO <i></i> 第 <b id="stIndex">02</b> 站</p>
+    <h2 class="st-name" id="stName">血战湘江</h2>
+    <p class="st-meta" id="stMeta">1934.11 · 广西·湘江</p>
+    <div class="st-line"><i id="stBar"></i></div>
+  </div>
+</div>
+
+<!-- ============ 路线全图 ============ -->
+<div class="map-view" id="mapView" hidden>
+  <button class="map-view-backdrop" id="mapViewBackdrop" type="button" aria-label="关闭路线全图"></button>
+  <div class="map-view-panel" role="dialog" aria-modal="true" aria-labelledby="mapViewTitle">
+    <header class="map-view-head">
+      <div>
+        <p class="kicker">THE LONG MARCH · 1934—1936</p>
+        <h2 id="mapViewTitle">长征路线全图</h2>
+      </div>
+      <button class="map-view-close" id="mapViewClose" type="button" aria-label="关闭路线全图">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+    <div class="map-view-stage" id="mapViewStage">
+      <img class="map-view-img" src="assets/route-map-crop.jpg" alt="中国工农红军长征路线示意图">
+      <div class="map-view-nodes" id="mapViewNodes"></div>
+    </div>
+    <footer class="map-view-foot">
+      <div class="mv-legend">
+        <span><i class="mv-dot is-done"></i>已抵达</span>
+        <span><i class="mv-dot is-current"></i>正在此地</span>
+        <span><i class="mv-dot"></i>待出发</span>
+      </div>
+      <small>底图为长征路线示意图，点位按史料地点标注 · 点击站点查看行军手记</small>
+    </footer>
+  </div>
+</div>
+
+<!-- ============ 行军手记 ============ -->
+<div class="dossier" id="dossier" hidden>
+  <button class="dossier-backdrop" id="dossierBackdrop" type="button" aria-label="关闭行军手记"></button>
+  <article class="dossier-panel" role="dialog" aria-modal="true" aria-labelledby="dossierTitle">
+    <button class="dossier-close" id="dossierClose" type="button" aria-label="关闭行军手记">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <span class="dossier-big-index" id="dossierIndex" aria-hidden="true">03</span>
+    <p class="kicker">STATION DOSSIER · 行军手记</p>
+    <h2 id="dossierTitle">遵义会议</h2>
+    <p class="dossier-meta" id="dossierMeta">1935.01 · 贵州·遵义</p>
+    <p class="dossier-intro" id="dossierIntro"></p>
+    <div class="dossier-note" id="dossierNote"></div>
+    <div class="dossier-foot">
+      <span class="dossier-status" id="dossierStatus">尚未抵达</span>
+      <span class="dossier-seal" aria-hidden="true">星火</span>
+    </div>
+  </article>
+</div>
+
+<!-- ============ 险关预告 ============ -->
+<div class="briefing" id="briefing" hidden>
+  <div class="briefing-backdrop"></div>
+  <div class="briefing-panel" role="dialog" aria-modal="true" aria-labelledby="briefingTitle">
+    <div class="briefing-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="kicker">KEY PASSAGE · 险关</p>
+    <p class="briefing-no" id="briefingNo">第 03 站</p>
+    <h2 id="briefingTitle">遵义会议</h2>
+    <p class="briefing-meta" id="briefingMeta">1935.01 · 贵州·遵义</p>
+    <p class="briefing-intro" id="briefingIntro"></p>
+    <p class="briefing-rule">限时更紧 · 军功 ×1.5</p>
+    <button class="btn btn-primary" id="briefingEnter" type="button">迎战险关</button>
+    <p class="briefing-hint">按 Enter 进入</p>
+  </div>
+</div>
+
+<!-- ============ 玩法说明 ============ -->
+<div class="help" id="help" hidden>
+  <button class="help-backdrop" id="helpBackdrop" type="button" aria-label="关闭玩法说明"></button>
+  <div class="help-panel" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+    <button class="help-close" id="helpClose" type="button" aria-label="关闭玩法说明">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <p class="kicker">FIELD MANUAL · 行军手册</p>
+    <h2 id="helpTitle">如何走完这一程</h2>
+    <div class="help-grid">
+      <section>
+        <h3><i>壹</i>三种题型</h3>
+        <p><b>单选</b> 从四个选项中选出正确答案。</p>
+        <p><b>排序</b> 按时间先后依次点选词条，选满即判定。</p>
+        <p><b>配对</b> 先点左侧、再点右侧，连成一组；全部连好后确认。</p>
+      </section>
+      <section>
+        <h3><i>贰</i>星火与燎原</h3>
+        <p>答对可积攒 <b>星火</b>，连捷时积攒更快；答错会失去一颗。</p>
+        <p>五格全满后，可发动 <b>燎原</b>：本题积分 ×2，并延长 10 秒。</p>
+      </section>
+      <section>
+        <h3><i>叁</i>三枚锦囊</h3>
+        <p><b>火眼</b> 单选排除两项 / 排序点出首项 / 配对连对一组。</p>
+        <p><b>疾行</b> 本题延长 10 秒。<b>参谋</b> 给出一条史实线索。</p>
+      </section>
+      <section>
+        <h3><i>肆</i>险关与印记</h3>
+        <p>第 3、6、9、12 站为 <b>险关</b>，限时更紧，军功 ×1.5。</p>
+        <p>完成征途、连捷、全对等表现会点亮 <b>行军印记</b>。</p>
+      </section>
+    </div>
+    <div class="help-keys">
+      <span><kbd>1</kbd>—<kbd>4</kbd> 作答</span>
+      <span><kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd> 锦囊</span>
+      <span><kbd>R</kbd> 燎原</span>
+      <span><kbd>Enter</kbd> 继续</span>
+      <span><kbd>Esc</kbd> 关闭 / 跳过</span>
+    </div>
+    <button class="btn btn-primary help-ok" id="helpOk" type="button">知道了</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="fx" id="fx" aria-hidden="true"></div>
+
+<script src="game.js"></script>
+</body>
+</html>
