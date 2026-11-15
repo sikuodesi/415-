@@ -13,9 +13,9 @@ const STORAGE = {
 };
 
 const MODES = {
-  easy: { id: 'easy', label: '轻装', tag: '从容识途', choice: 30, sort: 50, match: 46, score: 0.9, note: '时间充裕 · 积分 ×0.9' },
-  normal: { id: 'normal', label: '标准', tag: '风雨兼程', choice: 25, sort: 42, match: 38, score: 1, note: '标准节奏 · 积分 ×1.0' },
-  hard: { id: 'hard', label: '铁血', tag: '向死而生', choice: 19, sort: 34, match: 31, score: 1.25, note: '限时更短 · 积分 ×1.25' }
+  easy: { id: 'easy', label: '轻装', tag: '从容翻页', choice: 30, sort: 50, match: 46, score: 0.9, note: '时间充裕 · 积分 ×0.9' },
+  normal: { id: 'normal', label: '标准', tag: '风雨夜读', choice: 25, sort: 42, match: 38, score: 1, note: '标准节奏 · 积分 ×1.0' },
+  hard: { id: 'hard', label: '铁血', tag: '急行夜读', choice: 19, sort: 34, match: 31, score: 1.25, note: '限时更短 · 积分 ×1.25' }
 };
 
 const KEY_STAGES = new Set([2, 5, 8, 11]);
@@ -28,266 +28,194 @@ const BLAZE_MULTIPLIER = 2;
 
 const STAGES = [
   {
-    name: '于都出发', short: '于都出发', date: '1934.10', place: '江西·于都', key: false,
-    intro: '1934年10月，中央红军主力告别中央苏区，踏上远征。',
-    note: '1934年10月，中央红军8.6万余人从于都河畔出发，踏上战略转移之路。于都河也被称为“长征第一渡”。',
+    name: '于都出发', short: '于都', date: '1934.10', place: '江西·于都', key: false,
+    intro: '十月十七日 · 阴，有雨 · 于都河畔',
+    caption: '雨夜渡河，母亲给的布鞋没舍得穿。',
+    note: '1934年10月，中央红军8.6万余人从于都河畔出发，开始战略转移。于都河被称为“长征第一渡”。',
     variants: [
       {
         type: 'choice',
-        q: '中央红军长征的集结出发地是哪里？',
-        options: ['江西于都', '湖南韶山', '陕西吴起镇', '贵州遵义'],
+        q: '{{blank}}，我们被迫离开于都，战略转移开始了。在这之前，我们被满山而来的敌人包围，子弹也打光了。我心头一颤，怕回不到河南老家。',
+        options: ['一九三四年十月', '一九三五年一月', '一九三六年十月', '一九三四年八月'],
         a: 0,
-        hint: '于都河被称为“长征第一渡”，出发地就在江西。',
-        why: '1934年10月，中央红军主力从江西于都等地出发，开始长征。于都河也因此被称为“长征第一渡”。'
-      },
-      {
-        type: 'choice',
-        q: '中央红军开始长征的时间是？',
-        options: ['1935年1月', '1934年10月', '1935年10月', '1936年10月'],
-        a: 1,
-        hint: '战略转移始于1934年秋，三大主力会师则在1936年。',
-        why: '1934年10月，中央红军开始战略转移；1936年10月，红军三大主力会师，宣告长征胜利结束。'
+        hint: '战略转移开始于1934年秋；遵义会议在1935年初，三大主力会师在1936年秋。',
+        why: '1934年10月，中央红军主力从江西于都出发，开始战略转移。于都河因此被称为“长征第一渡”。'
       }
     ]
   },
   {
-    name: '血战湘江', short: '血战湘江', date: '1934.11', place: '广西·湘江', key: false,
-    intro: '湘江两岸，红军以巨大牺牲掩护中央纵队渡江。',
+    name: '血战湘江', short: '湘江', date: '1934.11', place: '广西·湘江', key: false,
+    intro: '十一月三十日 · 阴 · 湘江边',
+    caption: '江水红了，浮桥断了。',
     note: '湘江战役是长征途中最为惨烈的一战。中央红军由出发时的8.6万余人锐减至3万余人。',
     variants: [
       {
         type: 'choice',
-        q: '长征途中，中央红军损失最惨重的一次战役是？',
-        options: ['湘江战役', '四渡赤水', '腊子口战役', '直罗镇战役'],
+        q: '十一月末，湘江。江水是红的，浮桥断了。{{blank}}。我们连只剩七个人，我把名字写在绑腿上，怕死后没人认得。',
+        options: ['中央红军由八万六千人锐减到三万余人', '中央红军由八万六千人增加到十万余人', '中央红军由三万人锐减到八千人', '中央红军在湘江边全军覆没'],
         a: 0,
-        hint: '这场战役发生在湘江两岸，是长征中最沉重的一页。',
-        why: '湘江战役中，中央红军由出发时的8.6万余人锐减至3万余人，付出了极其惨重的代价。'
-      },
-      {
-        type: 'choice',
-        q: '湘江战役后，中央红军人数由出发时的8.6万余人锐减到约多少？',
-        options: ['5万余人', '3万余人', '1万余人', '8万余人'],
-        a: 1,
-        hint: '出发时8.6万余人，此战之后只剩三万余人。',
-        why: '血战湘江后，红军广大干部战士对“左”倾错误路线的怀疑和不满日益增长，为遵义会议的召开创造了条件。'
+        hint: '出发时八万六千人，湘江一战之后只剩三万余人。',
+        why: '1934年11月底至12月初，湘江战役在广西全州、兴安一带展开。中央红军由出发时的8.6万余人锐减至3万余人，是长征中损失最惨重的一战。'
       }
     ]
   },
   {
-    name: '遵义会议', short: '遵义会议', date: '1935.01', place: '贵州·遵义', key: true,
-    intro: '长征途中，一场会议改变了中国革命的航向。',
+    name: '遵义会议', short: '遵义', date: '1935.01', place: '贵州·遵义', key: true,
+    intro: '一月十五日 · 阴 · 遵义城',
+    caption: '城里的灯亮了一夜。',
     note: '1935年1月，遵义会议在极端危急的历史关头挽救了党、挽救了红军、挽救了中国革命，是党的历史上一个生死攸关的转折点。',
     variants: [
       {
-        type: 'sort',
-        q: '请按时间先后，排列下列长征途中的事件。',
-        challengeHint: '按时间先后依次点选，选满即判定',
-        items: [
-          { id: 'xiangjiang', text: '湘江战役' },
-          { id: 'tongdao', text: '通道转兵' },
-          { id: 'liping', text: '黎平会议' },
-          { id: 'zunyi', text: '遵义会议' }
-        ],
-        order: ['xiangjiang', 'tongdao', 'liping', 'zunyi'],
-        hint: '湘江之战后，红军先经通道转兵，又在黎平召开会议，最后才进入遵义。',
-        why: '1934年11月湘江战役后，中央红军经通道转兵、黎平会议，于1935年1月召开遵义会议，实现了伟大转折。'
+        type: 'choice',
+        q: '一月，遵义。城里的电灯亮了一夜。听说会上定了，{{blank}}。战士们不懂大道理，只知道队伍又有了主心骨。',
+        options: ['毛泽东同志又回来指挥我们了', '蒋介石答应停止内战了', '红军决定就在贵州扎根', '苏联派来了新的军事顾问'],
+        a: 0,
+        hint: '遵义会议确立了毛泽东同志在党中央和红军的领导地位。',
+        why: '1935年1月，遵义会议在极端危急的关头召开，确立了毛泽东同志在党中央和红军的领导地位，是党的历史上生死攸关的转折点。'
       }
     ]
   },
   {
-    name: '四渡赤水', short: '四渡赤水', date: '1935.01—03', place: '川黔滇边', key: false,
-    intro: '赤水河畔，红军声东击西，在运动中寻找生机。',
-    note: '1935年初，中央红军在川黔滇边四次渡过赤水河，以灵活机动的战术变被动为主动，被誉为毛泽东军事指挥的“得意之笔”。',
+    name: '四渡赤水', short: '赤水', date: '1935.01—03', place: '川黔滇边', key: false,
+    intro: '二月 · 雨 · 赤水河',
+    caption: '草鞋磨穿，敌人被牵着走。',
+    note: '1935年初，中央红军在川黔滇边四次渡过赤水河，以灵活机动的战术变被动为主动。',
     variants: [
       {
         type: 'choice',
-        q: '四渡赤水战役主要发生在哪一区域？',
-        options: ['川黔滇边界', '湘鄂赣边界', '陕甘宁边界', '闽粤赣边界'],
+        q: '二月，赤水河。我们来回渡了四趟，草鞋磨穿了。{{blank}}。敌人追得凶，我们却从他们的缝隙里钻了出去。',
+        options: ['我们假装要打贵阳', '我们攻下了贵阳城', '我们北渡长江成功了', '我们在河上修了一座桥'],
         a: 0,
-        hint: '赤水河连接贵州、四川、云南三省边界。',
-        why: '四渡赤水战役在贵州、四川、云南交界的赤水河流域展开。红军声东击西、机动作战，摆脱了国民党重兵的围追堵截。'
-      },
-      {
-        type: 'choice',
-        q: '四渡赤水常被誉为什么？',
-        options: ['中国革命的“宣言书”', '毛泽东军事指挥的“得意之笔”', '抗日战争的“第一枪”', '人民军队的“摇篮”'],
-        a: 1,
-        hint: '毛泽东本人对这场灵活机动的战役颇为自得。',
-        why: '四渡赤水是中央红军长征中的经典战例。红军在毛泽东等指挥下以灵活机动的战术变被动为主动，常被誉为毛泽东军事指挥的“得意之笔”。'
+        hint: '四渡赤水时，红军佯攻贵阳，调出滇军，再趁虚西进。',
+        why: '1935年1月至3月，中央红军在川黔滇边四次渡过赤水河，声东击西、灵活机动，变被动为主动。佯攻贵阳是其中的关键一着。'
       }
     ]
   },
   {
-    name: '巧渡金沙江', short: '巧渡金沙', date: '1935.05', place: '云南·皎平渡', key: false,
-    intro: '金沙江畔，七条小船承载着红军的命运。',
+    name: '巧渡金沙江', short: '金沙江', date: '1935.05', place: '云南·皎平渡', key: false,
+    intro: '五月 · 晴 · 金沙江皎平渡',
+    caption: '七条小船，九天九夜。',
     note: '1935年5月，中央红军在皎平渡等渡口，仅靠7条小船，历时9天9夜渡过金沙江，跳出了数十万敌军的包围圈。',
     variants: [
       {
         type: 'choice',
-        q: '红军巧渡金沙江的主要渡口是？',
-        options: ['安顺场', '将台堡', '皎平渡', '于都河'],
-        a: 2,
-        hint: '渡口名中有一个“皎”字，取“皎洁”之意。',
+        q: '五月，金沙江。江水吼得听不见人话。{{blank}}，九天九夜，我们全过了江。船工说，你们是神兵。',
+        options: ['只找到七条小船', '缴获了七艘军舰', '架起了一座铁索桥', '从上游徒步蹚了过去'],
+        a: 0,
+        hint: '皎平渡只有七条小船，船工昼夜摆渡。',
         why: '1935年5月，中央红军在皎平渡等渡口，仅靠7条小船，历时9天9夜渡过金沙江，跳出了数十万敌军的包围圈。'
-      },
-      {
-        type: 'choice',
-        q: '巧渡金沙江的战略意义是什么？',
-        options: ['建立陕甘革命根据地', '宣告长征胜利结束', '实现国共第二次合作', '跳出敌军包围圈，取得战略转移主动权'],
-        a: 3,
-        hint: '渡江之后，红军跳出了数十万敌军的包围圈。',
-        why: '渡过金沙江后，中央红军摆脱了数十万国民党军队的围追堵截，取得了战略转移中具有决定意义的胜利。'
       }
     ]
   },
   {
-    name: '飞夺泸定桥', short: '飞夺泸定桥', date: '1935.05', place: '四川·泸定', key: true,
-    intro: '大渡河上，十三根铁索横在枪林弹雨之间。',
+    name: '飞夺泸定桥', short: '泸定桥', date: '1935.05', place: '四川·泸定', key: true,
+    intro: '五月二十九日 · 雨 · 泸定桥',
+    caption: '十三根铁索，二十二个人。',
     note: '1935年5月29日，22名突击队员冒着枪林弹雨攀踏十三根铁索，夺下泸定桥，为红军北上打开了通道。',
     variants: [
       {
-        type: 'match',
-        q: '将下列渡口、桥梁与其发生的史实配对。',
-        challengeHint: '先点左侧，再点右侧，连成一组',
-        pairs: [
-          { id: 'anshun', left: '安顺场', right: '十七勇士强渡大渡河' },
-          { id: 'luding', left: '泸定桥', right: '二十二勇士攀铁索夺桥' },
-          { id: 'jiaoping', left: '皎平渡', right: '七条小船九天九夜' }
-        ],
-        hint: '泸定桥的勇士是二十二名，安顺场是十七名，皎平渡靠的是七条小船。',
-        why: '1935年5月，中央红军在皎平渡巧渡金沙江，在安顺场强渡大渡河，又飞夺泸定桥，粉碎了敌人妄图让红军成为“石达开第二”的企图。'
+        type: 'choice',
+        q: '五月二十九，泸定桥。桥板被敌人抽了，只剩十三根铁索。{{blank}}。我趴在桥头，看见第一个冲上去的是二连的廖大珠。',
+        options: ['二十二名勇士攀着铁索往前爬', '工兵连夜把桥板重新铺好', '我们坐船从桥下绕了过去', '敌人自己放火烧断了铁索'],
+        a: 0,
+        hint: '夺桥的是二十二名突击队员，廖大珠是队长。',
+        why: '1935年5月29日，22名突击队员冒着枪林弹雨，攀踏泸定桥13根铁索夺下桥头，为红军北上打开了通道。'
       }
     ]
   },
   {
-    name: '翻越夹金山', short: '翻越夹金', date: '1935.06', place: '四川·宝兴', key: false,
-    intro: '夹金山终年积雪，空气稀薄，人迹罕至。',
+    name: '翻越夹金山', short: '夹金山', date: '1935.06', place: '四川·宝兴', key: false,
+    intro: '六月 · 雪 · 夹金山',
+    caption: '雪没过膝盖，风像刀子。',
     note: '夹金山海拔4000多米，终年积雪、空气稀薄，是中央红军长征中翻越的第一座大雪山。',
     variants: [
       {
         type: 'choice',
-        q: '中央红军长征中翻越的第一座大雪山是？',
-        options: ['六盘山', '夹金山', '岷山', '泰山'],
-        a: 1,
-        hint: '它位于四川宝兴，海拔4000多米，终年积雪。',
-        why: '夹金山位于四川，海拔4000多米，终年积雪、空气稀薄。红军以顽强意志翻越雪山，创造了人间奇迹。'
-      },
-      {
-        type: 'choice',
-        q: '夹金山主要位于今天的哪个省？',
-        options: ['云南', '贵州', '四川', '甘肃'],
-        a: 2,
-        hint: '宝兴县与小金县都在这个省。',
-        why: '夹金山位于四川省雅安市宝兴县与小金县之间，是中央红军长征翻越的第一座大雪山。'
+        q: '六月，夹金山。山上空气薄，走三步就要歇一歇。{{blank}}。老班长把最后一把炒面塞给我，说，别停下。',
+        options: ['这是我们翻过的第一座大雪山', '山上开满了映山红', '我们在山顶宿营了一夜', '这是长征中最后一座雪山'],
+        a: 0,
+        hint: '夹金山海拔4000多米，是中央红军长征中翻越的第一座大雪山。',
+        why: '1935年6月，中央红军翻越长征途中第一座大雪山——夹金山。夹金山位于四川宝兴与小金之间，海拔4000多米，终年积雪、空气稀薄。'
       }
     ]
   },
   {
-    name: '穿越草地', short: '穿越草地', date: '1935.08', place: '四川·松潘', key: false,
-    intro: '松潘草地，沼泽遍布，气候变化无常。',
+    name: '穿越草地', short: '草地', date: '1935.08', place: '四川·松潘', key: false,
+    intro: '八月 · 阴 · 松潘草地',
+    caption: '草下面是泥，泥下面是命。',
     note: '松潘草地位于四川阿坝，今若尔盖一带。这里沼泽密布、气候多变，红军在这里付出了巨大牺牲。',
     variants: [
       {
         type: 'choice',
-        q: '红军长征中穿越的松潘草地主要位于今天的哪个地区？',
-        options: ['四川阿坝', '甘肃敦煌', '青海西宁', '宁夏固原'],
+        q: '八月，松潘草地。看上去是草，踩下去是泥。{{blank}}。小周陷下去的时候，只来得及把枪递给我。',
+        options: ['我们挖野菜、煮皮带充饥', '草地上到处是青稞面', '我们骑马走了三天', '前面就是陕北的窑洞'],
         a: 0,
-        hint: '若尔盖沼泽就在这一带，位于四川西北。',
-        why: '松潘草地位于四川阿坝地区，今若尔盖一带。这里沼泽密布、气候多变，红军在这里付出了巨大牺牲。'
-      },
-      {
-        type: 'choice',
-        q: '过草地时，红军面对的主要困难是什么？',
-        options: ['敌军舰炮轰击', '沼泽密布、补给困难', '台风与海潮', '沙漠缺水'],
-        a: 1,
-        hint: '这里没有海，也没有沙漠，最危险的是脚下的泥沼。',
-        why: '草地泥沼遍布，稍有不慎就会陷落，粮食补给又极其困难。红军战士挖野菜、煮皮带，以惊人毅力走出草地。'
+        hint: '草地补给断绝，战士们挖野菜、煮皮带。',
+        why: '1935年8月，红军穿越松潘草地（今四川若尔盖一带）。草地沼泽密布、气候无常、补给困难，红军挖野菜、煮皮带，付出巨大牺牲。'
       }
     ]
   },
   {
-    name: '突破腊子口', short: '突破腊子口', date: '1935.09', place: '甘肃·迭部', key: true,
-    intro: '腊子口两山夹峙，是北上的最后一道天险。',
+    name: '突破腊子口', short: '腊子口', date: '1935.09', place: '甘肃·迭部', key: true,
+    intro: '九月 · 雨 · 腊子口',
+    caption: '两山夹一线，天亮前攀上崖。',
     note: '腊子口位于甘肃甘南迭部县，是甘川古道上的险要关隘。攻克腊子口，为红军北上陕甘打开了通道。',
     variants: [
       {
-        type: 'sort',
-        q: '请按时间先后，排列中央红军北上途中的行军节点。',
-        challengeHint: '按时间先后依次点选，选满即判定',
-        items: [
-          { id: 'jinsha', text: '巧渡金沙江' },
-          { id: 'luding', text: '飞夺泸定桥' },
-          { id: 'jiajin', text: '翻越夹金山' },
-          { id: 'lazi', text: '突破腊子口' }
-        ],
-        order: ['jinsha', 'luding', 'jiajin', 'lazi'],
-        hint: '金沙江、大渡河、雪山、腊子口，是北上路上先后要闯的关。',
-        why: '1935年5月至9月，中央红军先后巧渡金沙江、飞夺泸定桥、翻越夹金山、突破腊子口，为北上陕甘打开了通道。'
+        type: 'choice',
+        q: '九月，腊子口。两山夹着一道缝，敌人的机枪架在崖顶。{{blank}}。天亮前，我们攀上了后山。',
+        options: ['我们摸黑从悬崖上爬了上去', '我们从正面强攻了七天', '敌人主动让开了路', '我们绕道青海走了三个月'],
+        a: 0,
+        hint: '红军攀绝壁迂回到敌人侧后，前后夹击。',
+        why: '1935年9月，红军攻克甘肃迭部腊子口。突击队攀绝壁迂回，前后夹击，打开了北上陕甘的通道。'
       }
     ]
   },
   {
     name: '吴起镇会师', short: '吴起镇', date: '1935.10', place: '陕西·吴起', key: false,
-    intro: '1935年10月，中央红军抵达陕北吴起镇。',
-    note: '1935年10月19日，中央红军到达陕北吴起镇，宣告中央红军长征胜利结束。不久后，中央红军与陕北红军会师。',
+    intro: '十月十九日 · 晴 · 陕北吴起镇',
+    caption: '看见窑洞和红旗，有人哭了。',
+    note: '1935年10月19日，中央红军到达陕北吴起镇，宣告中央红军长征胜利结束。',
     variants: [
       {
         type: 'choice',
-        q: '1935年10月，中央红军到达陕北吴起镇，标志着什么？',
-        options: ['中央红军长征胜利结束', '长征正式开始', '红军三大主力会师', '抗日战争全面爆发'],
+        q: '十月十九，吴起镇。看见窑洞和红旗，有人蹲在地上哭。{{blank}}。我把草鞋脱下来，脚上全是血泡。',
+        options: ['我们走了二万五千里', '我们只走了一千里', '我们还要继续北上', '我们在这里住了十年'],
         a: 0,
-        hint: '这是中央红军长征的终点，但还不是三大主力会师的时刻。',
-        why: '1935年10月19日，中央红军到达陕北吴起镇，宣告中央红军长征胜利结束；不久后，中央红军与陕北红军会师。'
-      },
-      {
-        type: 'choice',
-        q: '中央红军长征的行程约为多少？',
-        options: ['一万里', '二万五千里', '五万里', '十万里'],
-        a: 1,
-        hint: '纵横十一个省，历时一年，被称为“二万五千里长征”。',
-        why: '中央红军历时一年，纵横十一个省，行程约二万五千里，完成了举世闻名的长征。'
+        hint: '中央红军历时一年，纵横十一个省，行程约二万五千里。',
+        why: '1935年10月19日，中央红军到达陕北吴起镇，宣告中央红军长征胜利结束。中央红军历时一年，纵横十一个省，行程约二万五千里。'
       }
     ]
   },
   {
-    name: '会宁会师', short: '会宁会师', date: '1936.10', place: '甘肃·会宁', key: false,
-    intro: '1936年10月，三大主力在西北大地胜利会师。',
+    name: '会宁会师', short: '会宁', date: '1936.10', place: '甘肃·会宁', key: false,
+    intro: '一九三六年十月 · 晴 · 甘肃会宁',
+    caption: '帽子抛上天，抱住不放。',
     note: '1936年10月，红一、红二、红四方面军在甘肃会宁和将台堡地区会师，标志着红军长征胜利结束。',
     variants: [
       {
         type: 'choice',
-        q: '1936年10月，红军三大主力在哪一地区会师，宣告长征胜利结束？',
-        options: ['陕西吴起镇', '甘肃会宁、将台堡地区', '贵州遵义', '江西井冈山'],
-        a: 1,
-        hint: '会宁与将台堡，都在甘肃。',
+        q: '一九三六年十月，会宁。我们和红二、红四方面军的兄弟抱在一起。{{blank}}。有人把帽子抛上天，有人只是哭。',
+        options: ['三大主力终于会师了', '红军开始第二次长征', '敌人攻下了会宁城', '我们与东北军开战了'],
+        a: 0,
+        hint: '1936年10月，红一、红二、红四方面军在会宁、将台堡会师。',
         why: '1936年10月，红一、红二、红四方面军在甘肃会宁和将台堡地区会师，标志着红军长征胜利结束。'
-      },
-      {
-        type: 'choice',
-        q: '参加长征的红军三大主力是哪三支部队？',
-        options: ['红一、红三、红五方面军', '红二、红四、红五方面军', '红一、红二、红四方面军', '红一、红二、红三方面军'],
-        a: 2,
-        hint: '红一、红二、红四，没有“红三方面军”。',
-        why: '红军三大主力是红一方面军、红二方面军、红四方面军。红二十五军也进行了长征，是最先到达陕北的红军部队。'
       }
     ]
   },
   {
-    name: '星火相传', short: '星火相传', date: '2026', place: '新时代', key: true,
-    intro: '从1936到2026，九十年过去，长征精神依然滚烫。',
-    note: '从1936到2026，九十年过去。长征精神——坚定信念、独立自主、军民同心、舍己为人——依然滚烫。',
+    name: '星火相传', short: '星火', date: '1936.10.22', place: '甘肃·会宁', key: true,
+    intro: '十月二十二日 · 夜 · 会宁',
+    caption: '油布包好日记，留给后人。',
+    note: '从1936年到2026年，长征胜利九十周年。这本日记留下的，不只是一个战士的经历。',
     variants: [
       {
-        type: 'match',
-        q: '将长征故事与其体现的精神配对。',
-        challengeHint: '先点左侧，再点右侧，连成一组',
-        pairs: [
-          { id: 'quilt', left: '半条被子', right: '军民鱼水、同人民风雨同舟' },
-          { id: 'match', left: '七根火柴', right: '信念如炬、把希望留给战友' },
-          { id: 'hook', left: '金色鱼钩', right: '舍己为人、忠诚担当' }
-        ],
-        hint: '半条被子讲军民，七根火柴讲信念，金色鱼钩讲牺牲。',
-        why: '长征精神体现在军民同心、坚定信念与舍己为人的无数细节里。九十年过去，这些故事仍然滚烫。'
+        type: 'choice',
+        q: '十月二十二，会宁。夜里，我把这本日记用油布包好。{{blank}}。等革命胜利了，我想让后人看看，我们是怎样走过来的。',
+        options: ['我想把它留给后来的人', '我想把它寄回河南老家', '我想把它交给部队的文书', '我想把它带进延安的窑洞'],
+        a: 0,
+        hint: '日记不是私产，他想让后人看见这条路。',
+        why: '从1936年到2026年，长征胜利九十周年。这本日记留下的，不只是一个人的经历，更是一代人对理想与信念的坚守。'
       }
     ]
   }
@@ -383,32 +311,32 @@ const HISTORY_CARDS = [
     ]
   },
   {
-    date: '1936—2026 · 九十年',
-    title: '星火相传：长征精神',
+    date: '1936.10.22 · 甘肃会宁',
+    title: '最后一页：把日记留给后人',
     facts: [
-      '从1936年到2026年，长征胜利九十周年。',
-      '长征精神包括坚定信念、独立自主、军民同心、舍己为人；半条被子、七根火柴等故事流传至今。'
+      '1936年10月，红军三大主力在会宁、将台堡会师，长征胜利结束。',
+      '这本日记没有留下主人的姓名。像他一样普通的红军战士，走完了二万五千里。'
     ]
   }
 ];
 
 const MARKS = [
-  { id: 'first', seal: '捷', name: '首战告捷', desc: '完成一次完整征途' },
-  { id: 'streak', seal: '连', name: '连中三元', desc: '最高连捷达到 3 次' },
-  { id: 'swift', seal: '疾', name: '疾如星火', desc: '5 秒内答对一题' },
-  { id: 'tools', seal: '囊', name: '锦囊妙计', desc: '一局用尽三枚锦囊' },
-  { id: 'key', seal: '关', name: '险关破阵', desc: '答对全部四道险关' },
-  { id: 'perfect', seal: '胜', name: '十二站全胜', desc: '单局答对全部 12 题' },
-  { id: 'blaze', seal: '燎', name: '燎原之火', desc: '触发一次燎原时刻' },
-  { id: 'veteran', seal: '铁', name: '铁血征途', desc: '铁血难度下答对 8 站以上' }
+  { id: 'first', seal: '记', name: '合上日记', desc: '完成一次完整征途' },
+  { id: 'streak', seal: '连', name: '连补三笔', desc: '最高连捷达到 3 次' },
+  { id: 'swift', seal: '疾', name: '落笔如飞', desc: '5 秒内补对一处' },
+  { id: 'tools', seal: '友', name: '战友相助', desc: '一局用尽三样办法' },
+  { id: 'key', seal: '关', name: '难页过关', desc: '补对全部四道难页' },
+  { id: 'perfect', seal: '全', name: '十二页全对', desc: '单局补对全部 12 处' },
+  { id: 'blaze', seal: '燎', name: '星火燎原', desc: '触发一次燎原时刻' },
+  { id: 'veteran', seal: '铁', name: '铁血夜读', desc: '铁血难度下补对 8 页以上' }
 ];
 
 const RANKS = [
-  { min: 12, title: '星火传人', line: '十二站全胜。你走过的，不只是二万五千里，更是一条理想与信念的路。' },
-  { min: 10, title: '长征先锋', line: '山河为卷，脚步作答。你已经把这段历史，走成了自己的精神坐标。' },
-  { min: 8, title: '红军战士', line: '一路风雨兼程，你把大多数历史坐标牢牢记住。再走一次，会更接近胜利。' },
-  { min: 6, title: '行军学员', line: '征途过半，星火已燃。翻回错题看看，那些地名与年份会重新亮起来。' },
-  { min: 0, title: '星火新兵', line: '第一次出征，难免迷路。历史从不催促赶路的人，读懂每一站，再出发。' }
+  { min: 12, title: '星火传人', line: '十二页全对。你补上的不只是字，更是一个普通战士走过的二万五千里。' },
+  { min: 10, title: '长征先锋', line: '山河为纸，脚步作笔。你已经把这段历史，写进了自己的心里。' },
+  { min: 8, title: '红军战士', line: '一路风雨兼程，你把大多数日子都认了出来。再翻一遍，会更接近那个年代。' },
+  { min: 6, title: '行军学员', line: '日记翻过大半，字迹渐渐清楚。回头看看补错的地方，那些地名与年份会重新亮起来。' },
+  { min: 0, title: '星火新兵', line: '第一次翻开这本日记，难免认错几个字。历史从不催促赶路的人，读懂每一页，再出发。' }
 ];
 
 const MAP_POINTS = [
@@ -441,7 +369,7 @@ const NODE_ICONS = [
   '<path class="solid" d="M12 4.2l1.85 3.75 4.14.6-3 2.92.71 4.13L12 13.65l-3.7 1.95.71-4.13-3-2.92 4.14-.6z"/><path d="M12 17.6v2.8M5.3 18.8l1.5 1.1M18.7 18.8l-1.5 1.1"/>'
 ];
 
-const TYPE_LABELS = { choice: '单选', sort: '排序', match: '配对' };
+const TYPE_LABELS = { choice: '补字', sort: '排序', match: '配对' };
 
 /* ---------- DOM ---------- */
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -504,6 +432,8 @@ const el = {
   keyTag: $('#keyTag'),
   cardIndex: $('#cardIndex'),
   stageIntro: $('#stageIntro'),
+  diaryCaption: $('#diaryCaption'),
+  rainNote: $('#rainNote'),
   questionText: $('#questionText'),
   toolStrip: $('#toolStrip'),
   toolEye: $('#toolEye'),
@@ -574,7 +504,7 @@ const el = {
 /* ---------- 工具函数 ---------- */
 const pad2 = n => String(n).padStart(2, '0');
 const fmt = n => Number(n).toLocaleString('zh-CN');
-const letter = i => String.fromCharCode(65 + i);
+const letter = i => '甲乙丙丁戊'[i] || String.fromCharCode(65 + i);
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = () => window.matchMedia('(max-width: 1023px)').matches;
@@ -590,6 +520,16 @@ function shuffle(list) {
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+}
+
+/* 日记正文：{{blank}} 是雨水洇开、需要玩家补上的那一处。 */
+function diaryHtml(text) {
+  const raw = String(text || '');
+  const parts = raw.split('{{blank}}');
+  const before = escapeHtml(parts[0] || '');
+  const after = escapeHtml(parts.slice(1).join('{{blank}}') || '');
+  if (parts.length === 1) return before;
+  return `${before}<span class="rain-blank" id="rainBlank" role="textbox" aria-readonly="true" aria-label="被雨水洇开的字迹，待补写"><span class="rain-smudge" aria-hidden="true"></span><span class="rain-hint" aria-hidden="true">雨渍</span></span>${after}`;
 }
 
 function loadString(key) {
@@ -1667,8 +1607,8 @@ function nodeStatus(index) {
 function nodeAria(index) {
   const stage = STAGES[index];
   const status = nodeStatus(index);
-  const statusText = status === 'done' ? '已抵达' : status === 'current' ? '正在此地' : '待出发';
-  return `第 ${index + 1} 站 ${stage.short}，${statusText}。按回车查看行军手记。`;
+  const statusText = status === 'done' ? '已翻过' : status === 'current' ? '正在读' : '未翻开';
+  return `第 ${index + 1} 页 ${stage.short}，${statusText}。按回车查看那一页。`;
 }
 
 function initMap() {
@@ -1814,6 +1754,16 @@ function initRail() {
   )).join('');
 }
 
+function initMobileRoute() {
+  const track = document.getElementById('mobileRouteTrack');
+  if (!track) return;
+  track.innerHTML = STAGES.map((stage, index) => (
+    `<span class="mr-stop${stage.key ? ' is-key' : ''}" style="--i:${index}">
+      <i aria-hidden="true"></i><b>${escapeHtml(stage.short)}</b>
+    </span>`
+  )).join('');
+}
+
 function playStageCelebration(index) {
   const node = mapNodes[index];
   if (!node) return;
@@ -1872,17 +1822,17 @@ function openDossier(index) {
   const status = nodeStatus(index);
   el.dossierIndex.textContent = pad2(index + 1);
   el.dossierTitle.textContent = stage.name;
-  el.dossierMeta.textContent = `${stage.date} · ${stage.place} · ${stage.key ? '险关' : `第 ${index + 1} 站`}`;
+  el.dossierMeta.textContent = `${stage.date} · ${stage.place} · ${stage.key ? '难页' : `第 ${index + 1} 页`}`;
   el.dossierIntro.textContent = stage.intro;
   if (status === 'wait') {
-    el.dossierNote.textContent = '抵达此地后，解锁这一段行军手记。历史就在前方，继续向前。';
+    el.dossierNote.textContent = '还没翻到这一页。读到这里时，这一段字迹才会清楚。';
     el.dossierNote.classList.add('is-locked');
-    el.dossierStatus.textContent = '尚未抵达';
+    el.dossierStatus.textContent = '尚未读到';
     el.dossierStatus.className = 'dossier-status';
   } else {
     el.dossierNote.textContent = stage.note;
     el.dossierNote.classList.remove('is-locked');
-    el.dossierStatus.textContent = status === 'current' ? '正在此地' : '已抵达';
+    el.dossierStatus.textContent = status === 'current' ? '正在读' : '已翻过';
     el.dossierStatus.className = `dossier-status ${status === 'current' ? 'is-current' : 'is-done'}`;
   }
   el.dossier.hidden = false;
@@ -2017,12 +1967,12 @@ function setTimerUI(remaining) {
   el.timeRing.classList.toggle('is-critical', critical);
   el.timeRing.classList.toggle('is-key', !!(state.current && state.current.key));
   if (el.timeState) {
-    let text = '从容作答';
-    if (remaining <= 0) text = '时间到';
-    else if (critical) text = '最后冲刺';
-    else if (low) text = '时间告急';
-    else if (ratio <= 0.55 || seconds <= 12) text = '注意时间';
-    if (state.current && state.current.key && remaining > 0) text = `险关 · ${text}`;
+    let text = '慢慢认字';
+    if (remaining <= 0) text = '雨声盖过了字';
+    else if (critical) text = '墨迹要散了';
+    else if (low) text = '快些补上';
+    else if (ratio <= 0.55 || seconds <= 12) text = '别让雨再淋';
+    if (state.current && state.current.key && remaining > 0) text = `难页 · ${text}`;
     el.timeState.textContent = text;
   }
 }
@@ -2086,7 +2036,7 @@ function updateSparkUI(newSparks) {
     const fresh = previous >= 0 && i >= previous && on;
     return `<i class="${on ? 'is-on' : ''}${fresh ? ' is-new' : ''}" style="animation-delay:${i * 45}ms"></i>`;
   }).join('');
-  el.comboText.textContent = `连捷 ×${state.streak}`;
+  el.comboText.textContent = `连补 ×${state.streak}`;
   el.comboText.classList.toggle('is-hot', state.streak >= 2);
   const ready = state.sparks >= SPARK_MAX && !state.blazeArmed && !state.locked && state.timerActive;
   el.blazeBtn.disabled = !ready;
@@ -2109,7 +2059,7 @@ function activateBlaze() {
   el.questionCard.classList.add('is-blaze');
   sfxBlaze();
   vibrate([16, 30, 16]);
-  showToast('星星之火，可以燎原 · 本题积分 ×2，时限 +10 秒');
+  showToast('星火燎原 · 这一页积分 ×2，时限 +10 秒');
   const rect = el.blazeBtn.getBoundingClientRect();
   burstStars(rect.left + rect.width / 2, rect.top + rect.height / 2, 12);
 }
@@ -2140,9 +2090,9 @@ function toolAvailable(name) {
 function syncTools() {
   const type = state.current ? state.current.type : 'choice';
   const eyeLabels = {
-    choice: ['排除两项', '火眼：排除两个错误选项'],
-    sort: ['点出首项', '火眼：点出排序正确的第一项'],
-    match: ['连对一组', '火眼：自动连成一组正确配对']
+    choice: ['排除两项', '询问战友：战友帮你排除两个记错的选项'],
+    sort: ['点出首项', '询问战友：战友点出排序正确的第一项'],
+    match: ['连对一组', '询问战友：战友帮你连成一组正确配对']
   };
   const eyeMeta = eyeLabels[type] || eyeLabels.choice;
   const meta = {
@@ -2181,13 +2131,13 @@ function useTool(name) {
         button.disabled = true;
         button.setAttribute('aria-disabled', 'true');
       });
-      showToast('火眼 · 已排除两个错误选项');
+      showToast('战友想了想，指了指两个选项：这两个不对。');
     } else if (type === 'sort') {
       const first = state.current.order[0];
       state.sortPinned = first;
       state.sortSelection = [first];
       updateSortState();
-      showToast('火眼 · 已点出第一项');
+      showToast('战友说：第一个该是它。');
     } else if (type === 'match') {
       const pair = state.current.pairs.find(item => state.matchPairs[item.id] !== item.id && !state.matchLocked.has(`left:${item.id}`));
       if (pair) {
@@ -2199,7 +2149,7 @@ function useTool(name) {
         state.matchLocked.add(`right:${pair.id}`);
         state.matchSelected = null;
         updateMatchState();
-        showToast('火眼 · 已连成一组正确配对');
+        showToast('战友说：这一组不会错。');
       }
     }
     markToolUsed('eye');
@@ -2261,13 +2211,15 @@ function renderQuestion() {
   el.keyTag.hidden = !item.key;
   el.typeTag.textContent = TYPE_LABELS[item.type];
   el.stageIntro.textContent = item.stage.intro;
-  el.questionText.textContent = item.q;
+  if (el.diaryCaption) el.diaryCaption.textContent = item.stage.caption || '';
+  el.questionText.innerHTML = diaryHtml(item.q);
+  if (el.rainNote) el.rainNote.hidden = !item.q.includes('{{blank}}');
   el.cardStationName.textContent = item.stage.name;
   el.cardIndex.textContent = `${pad2(state.index + 1)} / ${STAGES.length}`;
   el.hudStationNo.textContent = pad2(state.index + 1);
   el.hudStationName.textContent = item.stage.name;
-  el.hudStationMeta.textContent = `${item.stage.date} · ${item.stage.place}${item.key ? ' · 险关' : ''} · ${MODES[state.mode].label}`;
-  el.nextLabel.textContent = state.index === state.run.length - 1 ? '完成长征' : '前往下一站';
+  el.hudStationMeta.textContent = `${item.stage.date} · ${item.stage.place}${item.key ? ' · 难页' : ''} · ${MODES[state.mode].label}`;
+  el.nextLabel.textContent = state.index === state.run.length - 1 ? '合上日记' : '翻到下一页';
   el.keyboardHint.textContent = keyboardHintFor(item.type);
   el.timeRing.classList.remove('is-low', 'is-critical', 'is-paused');
   state.limitMs = getLimit(item) * 1000;
@@ -2281,7 +2233,7 @@ function renderQuestion() {
   updateSparkUI();
   syncTools();
   updateMap(state.index, 'game');
-  updateJourneyStatus(`第 ${state.index + 1} 站${item.key ? ' · 险关' : ''} · ${item.stage.name}`);
+  updateJourneyStatus(`第 ${state.index + 1} 页${item.key ? ' · 难页' : ''} · ${item.stage.name}`);
   el.questionCard.classList.remove('is-enter');
   void el.questionCard.offsetWidth;
   el.questionCard.classList.add('is-enter');
@@ -2296,7 +2248,7 @@ function renderQuestion() {
 }
 
 function keyboardHintFor(type) {
-  if (type === 'choice') return '按 1—4 作答 · Q/W/E 锦囊 · R 燎原';
+  if (type === 'choice') return '按 1—4 补字 · Q 问战友 · W 疾行 · E 参谋 · R 燎原';
   if (type === 'sort') return '按 1—4 依次点选 · Q/W/E 锦囊 · R 燎原';
   return '点选左右配对 · Q/W/E 锦囊 · R 燎原';
 }
@@ -2460,6 +2412,13 @@ function selectChoice(index) {
   state.locked = true;
   stopTimer();
   const correct = index === state.current.correctIndex;
+  const blank = document.getElementById('rainBlank');
+  if (blank) {
+    blank.textContent = state.current.options[index].text;
+    blank.classList.remove('is-empty');
+    blank.classList.add('is-filled', correct ? 'is-correct' : 'is-wrong');
+    blank.setAttribute('aria-label', `已补写：${state.current.options[index].text}`);
+  }
   const buttons = $$('.option', el.challenge);
   buttons.forEach((button, i) => {
     button.disabled = true;
@@ -2742,7 +2701,7 @@ function pointsFor(item, remaining) {
 
 function pointsTags(item, usedBlaze) {
   const tags = [];
-  if (item.key) tags.push('险关 ×1.5');
+  if (item.key) tags.push('难页 ×1.5');
   if (usedBlaze) tags.push('燎原 ×2');
   if (MODES[state.mode].score !== 1) tags.push(`难度 ×${MODES[state.mode].score}`);
   return tags;
@@ -2750,7 +2709,7 @@ function pointsTags(item, usedBlaze) {
 
 function answerTextFor(item, pickedIndex, sortPicked, matchPairs) {
   if (item.type === 'choice') {
-    return `正确答案：<b>${letter(item.correctIndex)}. ${escapeHtml(item.options[item.correctIndex].text)}</b>`;
+    return `应补：<b>${letter(item.correctIndex)}. ${escapeHtml(item.options[item.correctIndex].text)}</b>`;
   }
   if (item.type === 'sort') {
     const lookup = {};
@@ -2775,7 +2734,7 @@ function renderSourceCard(stageIndex) {
     return;
   }
   el.sourceCard.hidden = false;
-  el.sourceCardKicker.textContent = `史料卡 · 第 ${pad2(stageIndex + 1)} 张 / 共 ${HISTORY_CARDS.length} 张`;
+  el.sourceCardKicker.textContent = `史料附页 · 第 ${pad2(stageIndex + 1)} 张 / 共 ${HISTORY_CARDS.length} 张`;
   el.sourceCardDate.textContent = card.date;
   el.sourceCardTitle.textContent = card.title;
   el.sourceCardFacts.textContent = '';
@@ -2830,7 +2789,7 @@ function resolveRound(correct, meta) {
   if (points > 0) showScoreFloat(points);
   updateSparkUI(prevSparks);
 
-  const badge = timeout ? '时限已到' : correct ? '回答正确' : '回答有误';
+  const badge = timeout ? '雨声盖过了字' : correct ? '补对了' : '补错了';
   el.feedback.hidden = false;
   el.feedback.classList.toggle('is-wrong', !correct);
   el.feedbackBadge.textContent = badge;
@@ -2844,8 +2803,8 @@ function resolveRound(correct, meta) {
   el.nextBtn.hidden = false;
   el.keyboardHint.textContent = '按 Enter 继续';
   updateJourneyStatus(correct
-    ? `通过 ${item.stage.name} · 继续前进`
-    : `记住 ${item.stage.name} · 继续前进`);
+    ? `补对 ${item.stage.short} · 翻到下一页`
+    : `记住 ${item.stage.short} · 继续往前`);
   completeMapStage(state.index);
 
   state.answers.push({
@@ -2881,6 +2840,13 @@ function revealTimeoutAnswer() {
   const item = state.current;
   if (!item) return;
   if (item.type === 'choice') {
+    const blank = document.getElementById('rainBlank');
+    if (blank) {
+      blank.textContent = item.options[item.correctIndex].text;
+      blank.classList.remove('is-empty');
+      blank.classList.add('is-filled', 'is-timeout');
+      blank.setAttribute('aria-label', `正确答案：${item.options[item.correctIndex].text}`);
+    }
     $$('.option', el.challenge).forEach((button, index) => {
       button.disabled = true;
       if (index === item.correctIndex) button.classList.add('is-correct');
@@ -2944,7 +2910,7 @@ function endGame() {
   renderResult(rank, isRecord, newMarks);
   showScreen('result');
   updateMap(STAGES.length - 1, 'complete');
-  updateJourneyStatus('征途完成 · 胜利会师');
+  updateJourneyStatus('日记合上了 · 会宁会师');
   sfxComplete();
   if (state.correctCount >= 8) sparkBurst();
   requestAnimationFrame(() => {
@@ -3007,7 +2973,7 @@ function updateModeUI() {
   $$('.mode-card', el.modeSelect).forEach(card => {
     card.setAttribute('aria-checked', String(card.dataset.mode === state.mode));
   });
-  el.modeNote.textContent = `${mode.label} · 单选 ${mode.choice} 秒 / 排序 ${mode.sort} 秒 · 积分 ×${mode.score}`;
+  el.modeNote.textContent = `${mode.label} · 每页 ${mode.choice} 秒 · 积分 ×${mode.score}`;
   el.modeChip.textContent = mode.label;
 }
 
@@ -3027,7 +2993,7 @@ function renderStart() {
   renderBest();
   renderMarkShelf();
   updateMap(-1, 'idle');
-  updateJourneyStatus('等待出发 · 十二站征途');
+  updateJourneyStatus('等待出发 · 十二页日记');
   el.modeChip.hidden = true;
 }
 
@@ -3106,10 +3072,10 @@ function goHome() {
 function showBriefing(item) {
   if (!item || !el.briefing) return;
   state.briefingPending = true;
-  el.briefingNo.textContent = `第 ${pad2(state.index + 1)} 站 · 险关`;
+  el.briefingNo.textContent = `第 ${pad2(state.index + 1)} 页 · 难页`;
   el.briefingTitle.textContent = item.stage.name;
   el.briefingMeta.textContent = `${item.stage.date} · ${item.stage.place}`;
-  el.briefingIntro.textContent = item.stage.intro;
+  el.briefingIntro.textContent = `${item.stage.intro}。这一页的雨更急，字迹更难认。`;
   el.briefing.hidden = false;
   el.briefing.classList.remove('is-open');
   void el.briefing.offsetWidth;
@@ -3212,11 +3178,11 @@ function renderNewMarks(newMarks) {
 function renderResult(rank, isRecord, newMarks) {
   const total = state.run.length;
   const accuracy = Math.round((state.correctCount / total) * 100);
-  const headline = state.correctCount >= 10 ? '胜利会师' : state.correctCount >= 6 ? '征途完成' : '星火初燃';
+  const headline = state.correctCount >= 10 ? '合上日记' : state.correctCount >= 6 ? '走到会宁' : '雨还没停';
   el.resultTitle.textContent = headline;
   el.resultSub.textContent = state.correctCount === total
-    ? '十二站全胜。你用知识走完了二万五千里。'
-    : '你已抵达终点，长征精神仍在路上。';
+    ? '十二页全部补对。一个普通战士的二万五千里，被你一字一句认了出来。'
+    : '日记翻到了最后一页。有些字还模糊着，但路已经走完了。';
   el.rankSeal.textContent = '';
   Array.from(rank.title).forEach(char => {
     const span = document.createElement('span');
@@ -3262,11 +3228,11 @@ function renderResultRoute() {
     const stop = document.createElement('span');
     const kind = answer.correct ? 'is-correct' : answer.timeout ? 'is-timeout' : 'is-wrong';
     stop.className = `result-stop ${kind}${answer.key ? ' is-key' : ''}`;
-    stop.title = `第 ${index + 1} 站${answer.key ? ' · 险关' : ''} · ${answer.stageShort}：${answer.correct ? '回答正确' : answer.timeout ? '超时未答' : '回答错误'}`;
+    stop.title = `第 ${index + 1} 页${answer.key ? ' · 难页' : ''} · ${answer.stageShort}：${answer.correct ? '补对了' : answer.timeout ? '超时未补' : '补错了'}`;
     el.resultRoute.appendChild(stop);
   });
   const rightCount = state.answers.filter(answer => answer.correct).length;
-  el.resultRoute.setAttribute('aria-label', `十二站答题结果：答对 ${rightCount} 站，未答对 ${state.answers.length - rightCount} 站`);
+  el.resultRoute.setAttribute('aria-label', `十二页日记补字结果：补对 ${rightCount} 页，未补对 ${state.answers.length - rightCount} 页`);
 }
 
 function sortTextFromIds(ids, items) {
@@ -3303,14 +3269,14 @@ function renderReview() {
     const meta = document.createElement('div');
     meta.className = 'review-meta';
     const name = document.createElement('span');
-    name.textContent = `第 ${pad2(answer.stageIndex + 1)} 站 · ${answer.stageShort}${answer.key ? ' · 险关' : ''} · ${TYPE_LABELS[answer.type] || ''}`;
+    name.textContent = `第 ${pad2(answer.stageIndex + 1)} 页 · ${answer.stageShort}${answer.key ? ' · 难页' : ''} · ${TYPE_LABELS[answer.type] || ''}`;
     const verdict = document.createElement('span');
     verdict.className = `review-verdict${answer.timeout ? ' is-timeout' : ''}`;
-    verdict.textContent = answer.timeout ? '超时未答' : '回答有误';
+    verdict.textContent = answer.timeout ? '超时未补' : '补错了';
     meta.append(name, verdict);
 
     const title = document.createElement('h4');
-    title.textContent = answer.question;
+    title.textContent = answer.question.replace('{{blank}}', '（雨水洇开处）');
 
     const picked = document.createElement('p');
     picked.className = 'review-answer';
@@ -3375,10 +3341,10 @@ async function shareResult() {
   const rank = (state.lastResult && state.lastResult.rank) || getRank();
   const fresh = (state.lastResult && state.lastResult.newMarks) || [];
   const markLine = fresh.length ? `\n新得行军印记：${fresh.map(mark => mark.name).join('、')}` : '';
-  const text = `我在「星火长征 · 重走长征路」中答对 ${state.correctCount}/${state.run.length} 题，通过 ${state.keyCorrect}/${KEY_STAGES.size} 道险关，获得「${rank.title}」，行军积分 ${fmt(state.score)} 分。\n难度：${MODES[state.mode].label} · 最高连捷 ×${state.bestStreak} · 触发燎原 ${state.blazeUsed} 次${markLine}\n从于都到会宁，十二站，二万五千里。\n纪念中国工农红军长征胜利九十周年。`;
+  const text = `我翻完了《一个红军战士的日记》，补对 ${state.correctCount}/${state.run.length} 处被雨水洇开的字，通过 ${state.keyCorrect}/${KEY_STAGES.size} 道难页，获得「${rank.title}」，行军积分 ${fmt(state.score)} 分。\n难度：${MODES[state.mode].label} · 最高连补 ×${state.bestStreak} · 触发燎原 ${state.blazeUsed} 次${markLine}\n从于都到会宁，十二页，二万五千里。\n纪念中国工农红军长征胜利九十周年。`;
   if (navigator.share) {
     try {
-      await navigator.share({ title: '星火长征 · 重走长征路', text });
+      await navigator.share({ title: '一个红军战士的日记', text });
       return;
     } catch (err) {
       if (err && err.name === 'AbortError') return;
@@ -3432,7 +3398,6 @@ function updateSoundUI() {
 
 /* ---------- 键盘 ---------- */
 function handleGlobalKey(event) {
-  if (!document.getElementById('expeditionModal').hidden) return;
   if (el.help && !el.help.hidden) {
     if (event.key === 'Escape') {
       event.preventDefault();
@@ -3707,149 +3672,6 @@ document.addEventListener('keydown', event => {
 NODE_ICONS[2]='<path d="M3 8h18L19 5H5zM5 8v13M19 8v13M3 21h18M4 13h16M7 10h2M11 10h2M15 10h2M7 15h2M15 15h2M10 21v-5h4v5"/>';
 NODE_ICONS[5]='<path d="M3 3v18M21 3v18M3 6Q12 17 21 6M3 9Q12 20 21 9M3 17h18M6 11v6M9 13v4M12 14v3M15 13v4M18 11v6M4 21h16"/>';
 NODE_ICONS[10]='<path d="M2 21h20M4 21V11h16v10M3 11h18L18 8H6zM6 8V5h12v3M5 5h14l-2-2H7zM10 21v-5a2 2 0 0 1 4 0v5M7 13h2M15 13h2"/>';
-const expedition = { supplies:3, cap:6, bonus:0, timedStage:-1, camps:new Set(), log:[], gained:0, spent:0, drills:[], drillIndex:0, drillHits:0, returnFocus:null };
-const supplyBar = document.createElement('section');
-supplyBar.className='supply-ledger';
-supplyBar.setAttribute('aria-label','行军补给与本站目标');
-supplyBar.innerHTML='<div class="ledger-row"><span>行军补给 <b id="supplyCount">3 / 6</b></span><span id="supplyEffect">锦囊每次消耗 1</span></div><p id="stationGoal"></p>';
-el.questionCard.before(supplyBar);
-const modal = document.createElement('div');
-modal.id='expeditionModal'; modal.className='expedition-modal'; modal.hidden=true;
-modal.innerHTML='<section class="expedition-panel" role="dialog" aria-modal="true" aria-labelledby="expeditionTitle"><p class="kicker" id="expeditionKicker"></p><h2 id="expeditionTitle" tabindex="-1"></h2><p id="expeditionLead"></p><div id="expeditionBody"></div><button type="button" class="btn btn-ghost" id="expeditionClose">稍后再练</button></section>';
-document.body.appendChild(modal);
-const expTitle=$('#expeditionTitle'), expBody=$('#expeditionBody'), expLead=$('#expeditionLead'), expClose=$('#expeditionClose');
-let expeditionKind='', continuation=null;
-function supplyChange(amount){const old=expedition.supplies;expedition.supplies=clamp(old+amount,0,expedition.cap);const delta=expedition.supplies-old;if(delta>0)expedition.gained+=delta;else expedition.spent-=delta;renderLedger();return delta;}
-function renderLedger(){
- $('#supplyCount').textContent=`${expedition.supplies} / ${expedition.cap}`;
- $('#supplyEffect').textContent=expedition.supplies===0?'补给不足仍可答题 · 下一处休整免费补充':'锦囊每次消耗 1 · 三连答补给 +1';
- const item=state.current;
- $('#stationGoal').textContent=item?`第 ${pad2(state.index+1)} 站目标 · ${item.type==='sort'?'按时间先后还原事件':item.type==='match'?'连成全部史实配对':'辨明一项关键史实'}${expedition.timedStage===state.index?' · 侦察生效：时限 +12 秒':''}`:'';
-}
-function openExpedition(kind,title,lead){
- expeditionKind=kind; expedition.returnFocus=document.activeElement;
- $('#expeditionKicker').textContent=kind==='camp'?'行军筹划 / 游戏策略':'温故知新 / 不计积分';
- expTitle.textContent=title;expLead.textContent=lead;expBody.replaceChildren();
- expClose.hidden=kind==='camp';modal.hidden=false;document.body.classList.add('overlay-open');
- pauseFor('expedition');requestAnimationFrame(()=>expTitle.focus({preventScroll:true}));
-}
-function closeExpedition(){
- modal.hidden=true;expeditionKind='';resumeFor('expedition');syncOverlayOpen();
- const back=expedition.returnFocus;if(back&&back.isConnected)back.focus({preventScroll:true});
-}
-function addExpButton(title,detail,action,disabled=false){
- const button=document.createElement('button');button.type='button';button.className='exp-choice';button.disabled=disabled;
- const strong=document.createElement('strong'), small=document.createElement('span');strong.textContent=title;small.textContent=detail;button.append(strong,small);button.addEventListener('click',action);expBody.appendChild(button);return button;
-}
-function chooseCamp(action){
- if(expeditionKind!=='camp')return;
- let text='';
- if(action==='rest'){const gain=supplyChange(2);text=`整顿补给 +${gain}`;}
- else if(action==='scout'){
-   if(expedition.supplies<1)return;supplyChange(-1);expedition.bonus=12;expedition.timedStage=state.index+1;text='提前侦察：下一站 +12 秒';
- }else{
-   const tool=action.split(':')[1];if(!state.tools[tool]||expedition.supplies<2)return;
-   supplyChange(-2);state.tools[tool]=false;text=`整理锦囊：${{eye:'火眼',time:'疾行',hint:'参谋'}[tool]}恢复一次`;
- }
- expedition.camps.add(state.index);expedition.log.push(text);
- const go=continuation;continuation=null;closeExpedition();syncTools();showToast(text);if(go)go();
-}
-function openCamp(go){
- continuation=go;
- const next=state.run[state.index+1];
- openExpedition('camp',`抵达${state.current.stage.short} · 休整抉择`,`下一站：${next.stage.name}。选一种准备方式，不改变历史路线。补给 ${expedition.supplies}/${expedition.cap}；任何情况下都能继续。`);
- addExpButton('整顿补给','免费 · 补给 +2（最多6） · 保留锦囊供险关使用',()=>chooseCamp('rest'));
- addExpButton('提前侦察','消耗1补给 · 下一站时限 +12秒，给排序和配对多一点思考时间',()=>chooseCamp('scout'),expedition.supplies<1);
- const spent=Object.keys(state.tools).filter(key=>state.tools[key]);
- if(!spent.length){const note=document.createElement('p');note.className='exp-note';note.textContent='使用过的锦囊可在休整时消耗2补给恢复。每次休整仅选一项。';expBody.appendChild(note);}
- spent.forEach(key=>addExpButton(`整理锦囊 · ${{eye:'火眼',time:'疾行',hint:'参谋'}[key]}`,'消耗2补给 · 恢复该锦囊一次；实际使用时仍消耗1补给',()=>chooseCamp('tool:'+key),expedition.supplies<2));
-}
-const originalStartGame=startGame;
-startGame=function(){
- Object.assign(expedition,{supplies:3,bonus:0,timedStage:-1,camps:new Set(),log:[],gained:0,spent:0});
- if(!modal.hidden)closeExpedition();originalStartGame();renderLedger();
-};
-const originalToolAvailable=toolAvailable;
-toolAvailable=function(name){return expedition.supplies>=1&&originalToolAvailable(name);};
-const originalMarkToolUsed=markToolUsed;
-markToolUsed=function(name){supplyChange(-1);originalMarkToolUsed(name);};
-const originalSyncTools=syncTools;
-syncTools=function(){originalSyncTools();$$('.tool-btn',el.toolStrip).forEach(button=>{
- const name=button.dataset.tool;button.title=state.tools[name]?'已使用 · 休整时可恢复':expedition.supplies<1?'补给不足 · 仍可直接答题':'消耗1补给 · 本局一次，休整可恢复';
- button.setAttribute('aria-label',button.getAttribute('aria-label')+'；'+button.title);
-});};
-const originalGetLimit=getLimit;
-getLimit=function(item){return originalGetLimit(item)+(expedition.timedStage===state.index?expedition.bonus:0);};
-const originalRenderQuestion=renderQuestion;
-renderQuestion=function(){originalRenderQuestion();renderLedger();el.cardIndex.textContent=`${pad2(state.index+1)} / ${state.run.length}`;};
-const originalResolveRound=resolveRound;
-resolveRound=function(correct,meta){
- originalResolveRound(correct,meta);
- if(correct&&state.streak%3===0){const gain=supplyChange(1);el.feedbackPoints.textContent+=gain?' · 三连答：补给 +1':' · 三连答：补给已满';}
- renderLedger();
-};
-const originalNextQuestion=nextQuestion;
-nextQuestion=function(){
- if(!modal.hidden)return;
- if(state.screen==='game'&&state.locked&&!state.transitioning&&state.index<state.run.length-1
-   &&(state.index+1)%3===0&&!expedition.camps.has(state.index)) {openCamp(originalNextQuestion);return;}
- originalNextQuestion();
-};
-const recap=document.createElement('section');recap.className='exp-recap';
-const drillButton=document.createElement('button');drillButton.type='button';drillButton.className='btn btn-ghost';drillButton.id='drillBtn';
-el.reviewToggle.before(recap,drillButton);
-const originalRenderResult=renderResult;
-renderResult=function(...args){originalRenderResult(...args);
- const missed=state.answers.filter(a=>!a.correct).length;
- drillButton.hidden=missed===0;drillButton.textContent=`错题重练 · ${missed} 站`;
- recap.textContent=`行军筹划 · 结余 ${expedition.supplies} 补给 · 使用 ${expedition.spent} · 连答补充 ${expedition.gained-expedition.log.filter(x=>x.startsWith('整顿')).reduce((s,x)=>s+Number(x.match(/\+(\d+)/)?.[1]||0),0)}\n${expedition.log.join(' → ')||'尚无休整记录'}`;
-};
-function practiceOptions(item){
- if(item.type==='choice')return {q:item.q,options:shuffle(item.options.map(o=>({text:o.text,correct:o.correct})))};
- if(item.type==='sort'){
-   const ids=item.order, text=order=>order.map(id=>item.items.find(x=>x.id===id).text).join(' → ');
-   const candidates=[ids,ids.slice().reverse(),[...ids.slice(1),ids[0]],[ids[1],ids[0],...ids.slice(2)]];
-   const unique=[...new Map(candidates.map((ids,i)=>[text(ids),{text:text(ids),correct:i===0}])).values()];
-   return {q:item.q+'（请选择正确顺序）',options:shuffle(unique)};
- }
- const pair=item.pairs[expedition.drillIndex%item.pairs.length];
- return {q:`${item.q} · 「${pair.left}」对应哪项？`,options:shuffle(item.pairs.map(p=>({text:p.right,correct:p.id===pair.id})))};
-}
-function showDrill(){
- const item=expedition.drills[expedition.drillIndex];
- if(!item){
-   expTitle.textContent='温故知新 · 本轮完成';expLead.textContent=`首答掌握 ${expedition.drillHits} / ${expedition.drills.length} 站。不改写本局战绩；可再次挑战十二站。`;
-   expBody.replaceChildren();addExpButton('返回行军战报','保留原始积分与错题记录',closeExpedition);return;
- }
- const quiz=practiceOptions(item);
- expTitle.textContent=`${item.stage.short} · ${expedition.drillIndex+1}/${expedition.drills.length}`;
- expLead.textContent=quiz.q;expBody.replaceChildren();
- let done=false;
- quiz.options.forEach(option=>addExpButton(option.text,'选择后查看史实解析',()=>{
-   if(done)return;done=true;if(option.correct)expedition.drillHits++;
-   expBody.querySelectorAll('button').forEach((b,i)=>{b.disabled=true;b.classList.toggle('is-answer',quiz.options[i].correct);});
-   const explain=document.createElement('p');explain.className='drill-explanation';explain.setAttribute('role','status');
-   explain.textContent=(option.correct?'回答正确。':'再记住这一站。')+' 正确答案：'+quiz.options.find(o=>o.correct).text+'。'+item.explanation;expBody.appendChild(explain);
-   const next=addExpButton('下一题 / 完成','继续复习，不计时、不消耗补给',()=>{expedition.drillIndex++;showDrill();});next.focus();
- }));requestAnimationFrame(()=>expTitle.focus({preventScroll:true}));
-}
-drillButton.addEventListener('click',()=>{
- expedition.drills=state.answers.filter(a=>!a.correct).map(a=>state.run[a.stageIndex]);expedition.drillIndex=0;expedition.drillHits=0;
- openExpedition('drill','错题重练','');showDrill();
-});
-expClose.addEventListener('click',closeExpedition);
-document.addEventListener('keydown',event=>{
- if(modal.hidden)return;
- if(event.key==='Escape'){event.preventDefault();event.stopImmediatePropagation();if(expeditionKind==='drill')closeExpedition();else showToast('请选择一项准备方式；整顿补给始终免费');}
- if(event.key==='Enter'&&event.target===expTitle){event.preventDefault();expBody.querySelector('button:not(:disabled)')?.focus();}
-},true);
-// Explanation is visible before the first start, not hidden behind a long manual.
-const rules=document.createElement('div');rules.className='exp-rules';
-rules.innerHTML='<b>这一程，由你筹划</b><p>十二站史实问答，答后解析；每三站休整：补充补给、侦察延时或恢复锦囊。开局3补给，每次锦囊消耗1，三连答补给+1；补给为0仍可答题。集满星火可发动燎原。完成后可重练错题，或选更高难度再出发。</p><small>筹划仅是学习游戏策略，不代表真实历史行动或历史物资数量。</small>';
-el.startBtn.closest('.launch-panel').after(rules);
-const helpSection=document.createElement('section');helpSection.innerHTML='<h3>行军筹划与重练</h3><p>每三站的休整只能选一项：免费补给+2，花1补给为下一题加12秒，或花2补给恢复一枚已用锦囊。恢复后使用仍需1补给。补给上限6，不扣错题补给，不会阻挡前进。三连答补给+1与原有星火奖励并行。结算可重练本局错题，重练不计分、不改写纪录。</p>';
-$('.help-grid').appendChild(helpSection);
-if(new URLSearchParams(location.search).get('debug')==='1')window.__EXP={expedition,chooseCamp,modal};
 
 
 const lowPower = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4)
@@ -3905,79 +3727,11 @@ function stopCinema(){cancelAnimationFrame(cinemaRaf);}
 let sceneAudio=null, sceneGeneration=0, sceneEpoch=0, sceneMuted=true;
 const sceneBursts=Array.from({length:24},(_,i)=>({at:1.35+i*.235+Math.random()*.16,duration:.12+Math.random()*.19,strength:.35+Math.random()*.65}));
 function sceneEnvelope(t){return sceneBursts.reduce((sum,b)=>{const x=(t-b.at)/b.duration;return sum+(x>0&&x<1?Math.pow(Math.sin(x*Math.PI),2)*b.strength:0);},0);}
-const sceneControls=document.createElement('div');sceneControls.className='scene-audio-controls';
-sceneControls.innerHTML='<div id="sceneAudioChoices"><button type="button" id="sceneSoundStart">有声启程</button><button type="button" id="sceneSilentStart">静音启程</button></div><button type="button" id="sceneAudioToggle" aria-pressed="false">声音：关</button><span id="sceneAudioStatus" role="status">默认静音 · 开场自动继续</span>';
-el.prologue.querySelector('.pro-ui').appendChild(sceneControls);
-const sceneToggle=document.getElementById('sceneAudioToggle'),sceneStatus=document.getElementById('sceneAudioStatus');
-function sceneSoundUI(text){sceneToggle.textContent=sceneMuted?'声音：关':'声音：开';sceneToggle.setAttribute('aria-pressed',String(!sceneMuted));sceneStatus.textContent=text||(sceneMuted?'静音开场':'旗布与环境声已开启');}
-function fadeSceneAudio(reason='声音已停止'){
- sceneGeneration++;sceneMuted=true;sceneSoundUI(reason);
- const a=sceneAudio;sceneAudio=null;if(!a)return;
- cancelAnimationFrame(a.raf);a.stopping=true;
- try{const now=a.ctx.currentTime;a.master.gain.cancelScheduledValues(now);a.master.gain.setTargetAtTime(0,now,.055);}catch(e){}
- a.cleanup=window.setTimeout(()=>{for(const source of a.sources){try{source.stop();source.disconnect();}catch(e){}}try{a.master.disconnect();}catch(e){}if(a.ctx.state!=='closed')a.ctx.close().catch(()=>{});},230);
-}
-async function enableSceneAudio(){
- if(proFinished||el.prologue.hidden||document.hidden)return;
- if(sceneAudio){if(!sceneAudio.stopping)return;}
- const Audio=window.AudioContext||window.webkitAudioContext;
- if(!Audio){sceneSoundUI('当前浏览器不支持音频，静音继续');return;}
- const generation=++sceneGeneration;
- let ctx;
- try{
-  ctx=new Audio({latencyHint:'interactive'});
-  const master=ctx.createGain();master.gain.value=0;
-  const limiter=ctx.createDynamicsCompressor();limiter.threshold.value=-14;limiter.knee.value=12;limiter.ratio.value=8;limiter.attack.value=.006;limiter.release.value=.16;
-  master.connect(limiter);limiter.connect(ctx.destination);
-  const a={ctx,master,limiter,sources:[],raf:0,stopping:false,layers:[]};sceneAudio=a;
-  await ctx.resume();
-  if(generation!==sceneGeneration||document.hidden||proFinished||el.prologue.hidden){if(sceneAudio===a)fadeSceneAudio();else if(ctx.state!=='closed')ctx.close().catch(()=>{});return;}
-  // Independent filtered noise channels provide width without phase inversion; mono remains intact.
-  function noiseLayer({cut,high,gain,pan,type='lowpass'}){
-   const buffer=ctx.createBuffer(1,ctx.sampleRate*3,ctx.sampleRate),data=buffer.getChannelData(0);let brown=0;
-   for(let i=0;i<data.length;i++){brown=(brown+(Math.random()*2-1)*.07)/1.03;data[i]=brown*3;}
-   const source=ctx.createBufferSource();source.buffer=buffer;source.loop=true;
-   const hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=high;
-   const filter=ctx.createBiquadFilter();filter.type=type;filter.frequency.value=cut;filter.Q.value=.65;
-   const level=ctx.createGain();level.gain.value=gain;
-   const position=ctx.createStereoPanner?ctx.createStereoPanner():ctx.createGain();if(position.pan)position.pan.value=pan;
-   source.connect(hp);hp.connect(filter);filter.connect(level);level.connect(position);position.connect(master);source.start(0,Math.random()*2);
-   a.sources.push(source);const layer={source,filter,level,position};a.layers.push(layer);return layer;
-  }
-  const farL=noiseLayer({cut:470,high:95,gain:.12,pan:-.65}),farR=noiseLayer({cut:560,high:100,gain:.12,pan:.65});
-  const cloth=noiseLayer({cut:1600,high:260,gain:0,pan:0,type:'bandpass'});
-  const flutter=noiseLayer({cut:2700,high:650,gain:0,pan:0});
-  const bass=ctx.createOscillator(),bassGain=ctx.createGain();bass.type='sine';bass.frequency.value=61;bassGain.gain.value=.014;bass.connect(bassGain);bassGain.connect(master);bass.start();a.sources.push(bass);
-  master.gain.setTargetAtTime(.52,ctx.currentTime,.28);sceneMuted=false;sceneSoundUI();document.getElementById('sceneAudioChoices').hidden=true;
-  function update(){
-   if(sceneAudio!==a||a.stopping)return;
-   if(document.hidden||proFinished||el.prologue.hidden){fadeSceneAudio();return;}
-   const t=(performance.now()-sceneEpoch)/1000,now=ctx.currentTime;
-   const burst=sceneEnvelope(t),wave=.5+.5*Math.sin(t*2.8-6.4);
-   const envelope=(.018+burst*.19)*(.65+.35*wave);
-   cloth.level.gain.setTargetAtTime(envelope,now,.023);flutter.level.gain.setTargetAtTime(burst*.055,now,.018);
-   cloth.filter.frequency.setTargetAtTime(880+wave*700+burst*170,now,.04);
-   const box=document.getElementById('cinemaCloth').getBoundingClientRect();
-   const pan=clamp(((box.left+box.width*.5)/innerWidth-.5)*.95,-.4,.4);
-   for(const layer of [cloth,flutter])if(layer.position.pan)layer.position.pan.setTargetAtTime(pan,now,.12);
-   farL.level.gain.setTargetAtTime(.1+Math.sin(t*.7)*.018,now,.1);farR.level.gain.setTargetAtTime(.1+Math.cos(t*.63)*.018,now,.1);
-   a.raf=requestAnimationFrame(update);
-  }update();
- }catch(error){if(sceneAudio?.ctx===ctx)fadeSceneAudio('声音不可用，静音继续');else if(ctx&&ctx.state!=='closed')ctx.close().catch(()=>{});sceneSoundUI('声音不可用，静音继续');}
-}
-document.getElementById('sceneSoundStart').addEventListener('click',enableSceneAudio);
-document.getElementById('sceneSilentStart').addEventListener('click',()=>{document.getElementById('sceneAudioChoices').hidden=true;fadeSceneAudio('静音开场');});
-sceneToggle.addEventListener('click',()=>sceneMuted?enableSceneAudio():fadeSceneAudio('静音开场'));
-document.addEventListener('visibilitychange',()=>{if(document.hidden)fadeSceneAudio('页面隐藏，声音已停止');});
-window.addEventListener('pagehide',()=>fadeSceneAudio());
-// lifecycle hooks always fade, even if skip happens while resume() is pending.
-const sceneOldStop=stopCinema;stopCinema=function(){fadeSceneAudio();sceneOldStop();};
-const sceneOldCloth=startCinemaCloth;startCinemaCloth=function(){fadeSceneAudio();sceneEpoch=performance.now();sceneOldCloth();};
-if(new URLSearchParams(location.search).get('debug')==='1')window.__SCENE={get audio(){return sceneAudio},get epoch(){return sceneEpoch},get muted(){return sceneMuted},envelope:sceneEnvelope,stop:fadeSceneAudio};
 
 /* ---------- 启动 ---------- */
 function init() {
   initRail();
+  initMobileRoute();
   initMap();
   updateSoundUI();
   renderBest();
@@ -3985,7 +3739,6 @@ function init() {
   updateModeUI();
   initEvents();
   showScreen('start');
-  initPrologue();
   exposeDebug();
 }
 
