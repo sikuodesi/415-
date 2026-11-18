@@ -60,6 +60,17 @@
 
     var kicker = document.getElementById('sourceCardKicker');
 
+    // 预取十二张配图，翻到史料附页时不再出现半张空白
+    function preload() {
+      IMAGES.forEach(function (src) {
+        var pre = new Image();
+        pre.decoding = 'async';
+        pre.src = src;
+      });
+    }
+    if ('requestIdleCallback' in window) window.requestIdleCallback(preload, { timeout: 2500 });
+    else window.setTimeout(preload, 1200);
+
     // 「史料附页 · 第 07 张 / 共 12 张」
     function currentIndex() {
       var text = (kicker && kicker.textContent) || '';
@@ -75,7 +86,7 @@
       var src = IMAGES[index];
       if (host.dataset.src !== src) {
         host.dataset.src = src;
-        host.innerHTML = '<img src="' + src + '" alt="" decoding="async" loading="lazy">';
+        host.innerHTML = '<img src="' + src + '" alt="" decoding="async" loading="eager">';
         var img = host.firstChild;
         // 图片缺失时整块收起，不显示破图
         img.addEventListener('error', function () { host.hidden = true; });

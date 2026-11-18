@@ -95,6 +95,17 @@
     var noEl = wrap.querySelector('[data-pt="no"]');
     var barEl = wrap.querySelector('.pt-line i');
 
+    // 预取十二张史料图，翻页转场时相框不会先空着
+    function preload() {
+      PAGES.forEach(function (page) {
+        var pre = new Image();
+        pre.decoding = 'async';
+        pre.src = page.img;
+      });
+    }
+    if ('requestIdleCallback' in window) window.requestIdleCallback(preload, { timeout: 2000 });
+    else window.setTimeout(preload, 900);
+
     var timer = 0;
     var lastPage = null;
     var open = false;
