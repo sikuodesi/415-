@@ -86,17 +86,21 @@
       var src = IMAGES[index];
       if (host.dataset.src !== src) {
         host.dataset.src = src;
+        host.hidden = true;
         host.innerHTML = '<img src="' + src + '" alt="" decoding="async" loading="eager">';
         var img = host.firstChild;
-        // 图片缺失时整块收起，不显示破图
-        img.addEventListener('error', function () { host.hidden = true; });
+        // 图片缺失时整块收起，不显示破图；加载完成前也先收起，避免空相框
+        img.addEventListener('error', function () { if (host.dataset.src === src) host.hidden = true; });
+        img.addEventListener('load', function () { if (host.dataset.src === src) host.hidden = false; });
         // 十二张里的最后一张换成「合上日记」的说明
         var cap = document.createElement('span');
         cap.className = 'art-cap';
         cap.textContent = (index === IMAGES.length - 1 ? '日记最后一页 · ' : '') + '史料附页 · 图 ' + (index + 1) + ' / 12';
         host.appendChild(cap);
+        if (img.complete && img.naturalWidth) host.hidden = false;
+      } else {
+        host.hidden = false;
       }
-      host.hidden = false;
     }
 
     var observer = new MutationObserver(render);

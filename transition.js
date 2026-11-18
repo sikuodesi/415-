@@ -121,25 +121,50 @@
     }
 
     // 翻到第 n 页（n 从 1 开始）
+    var playToken = 0;
     function play(pageNo) {
       var page = PAGES[pageNo - 1];
       if (!page) return;
       noEl.textContent = ('0' + pageNo).slice(-2);
       nameEl.textContent = page.name;
       metaEl.textContent = page.date + ' · ' + page.place;
-      if (plateImg.getAttribute('src') !== page.img) plateImg.setAttribute('src', page.img);
-      wrap.hidden = false;
-      void wrap.offsetWidth;
-      wrap.classList.add('is-open');
-      open = true;
-      barEl.style.transition = 'none';
-      barEl.style.transform = 'scaleX(0)';
-      // 强制重排后再启动进度条，避免被合并掉
-      void barEl.offsetWidth;
-      barEl.style.transition = 'transform ' + HOLD + 'ms linear';
-      barEl.style.transform = 'scaleX(1)';
-      window.clearTimeout(timer);
-      timer = window.setTimeout(close, HOLD);
+
+      var token = ++playToken;
+      var srcChanged = plateImg.getAttribute('src') !== page.img;
+      if (srcChanged) plateImg.setAttribute('src', page.img);
+
+      function openPlate() {
+        if (token !== playToken) return;   // 已经翻到别的页了
+        wrap.hidden = false;
+        void wrap.offsetWidth;
+        wrap.classList.add('is-open');
+        open = true;
+        barEl.style.transition = 'none';
+        barEl.style.transform = 'scaleX(0)';
+        // 强制重排后再启动进度条，避免被合并掉
+        void barEl.offsetWidth;
+        barEl.style.transition = 'transform ' + HOLD + 'ms linear';
+        barEl.style.transform = 'scaleX(1)';
+        window.clearTimeout(timer);
+        timer = window.setTimeout(close, HOLD);
+      }
+
+      // 图片没就绪时先等它，避免转场里出现空相框
+      if (plateImg.complete && plateImg.naturalWidth) {
+        openPlate();
+        return;
+      }
+      var done = false;
+      function ready() {
+        if (done) return;
+        done = true;
+        plateImg.removeEventListener('load', ready);
+        plateImg.removeEventListener('error', ready);
+        openPlate();
+      }
+      plateImg.addEventListener('load', ready);
+      plateImg.addEventListener('error', ready);
+      window.setTimeout(ready, 1200);
     }
 
     wrap.addEventListener('click', close);
